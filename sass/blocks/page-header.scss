@@ -1,0 +1,75 @@
+.page-header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  background-color: rgba(256, 256, 256, 0.97);
+}
+
+.page-header__nav-list {
+  display: none;
+}
+
+.page-header__logo {
+  margin: 12px 19px 0 19px;
+  transition: 0.3s linear;
+}
+
+.page-header__menu-toggler {
+  align-self: center;
+  box-sizing: content-box;
+  background-image: url('../img/svg/icon_menu_closed.svg');
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  margin: 10px 6px 0 auto;
+}
+
+.page-header__nav-list-item {
+  margin: 26px 26px 26px 0;
+
+  & a:hover {
+    color: lighten($font-color-primary, 30%);
+  }
+
+  & a:active {
+    color: lighten($font-color-primary, 10%);
+  }
+}
+
+@media ($tablet-width) {
+  .page-header {
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .page-header__logo {
+    margin: 26px 18px 15px 40px;
+    transition: 0.3s linear;
+  }
+
+  .page-header__nav-list-item {
+    margin: 22px 28px 26px 0;
+
+    & a {
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 20px;
+      opacity: 0.6;
+      color: #333333;
+    }
+
+    &--active a {
+      pointer-events: none; // Делаем ссылку неактивной ибо она ведет на текущую страницу
+      opacity: 1;
+    }
+  }
+
+  .page-header__nav-list {
+    display: flex;
+    margin-bottom: 9px;
+  }
+
+  .page-header__menu-toggler {
+    display: none;
+  }
+}

@@ -1,0 +1,31 @@
+.events {
+  margin: 0 6%;
+  color: $font-color-primary;
+}
+
+.events__header {
+  font-size: 24px;
+  line-height: 28px;
+  margin: 10px 0;
+}
+
+.events__card {
+  min-width: 290px;
+  height: 200px;
+  margin: 0 0 16px 0;
+  background-color: #fafafa;
+  border-radius: 20px;
+  transition: 0.1s linear;
+
+  &:hover {
+    @include event-card-hover;
+  }
+
+  &:active {
+    @include event-card-active;
+  }
+}
+
+.events__card--s {
+  min-height: 101px;
+}
