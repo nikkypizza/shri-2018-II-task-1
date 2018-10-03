@@ -5,6 +5,7 @@ var gulp = require('gulp');
 // ####################### //
 
 var imagemin = require('gulp-imagemin');
+var webp = require("gulp-webp");
 var svgstore = require("gulp-svgstore");
 var rename = require("gulp-rename");
 var imageminPngquant = require('imagemin-pngquant');
@@ -43,6 +44,13 @@ gulp.task("sprite", function () {
     .pipe(rename("sprite.svg"))
     .pipe(gulp.dest("img/svg"));
 });
+
+gulp.task ("webp", function () {
+  return gulp.src ("img/**/*.{png,jpg}")
+  .pipe(webp({quality: 90}))
+  .pipe(gulp.dest("img"));
+});
+
 
 // ###################### //
 // DEVELOPMENT images END //
