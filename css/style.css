@@ -483,10 +483,6 @@ button {
   transition: 0.1s linear;
   padding-top: 20px; }
   .events__card:hover {
-    background: #f3f3f3;
-    box-shadow: 0 2px 6px 0 rgba(197, 186, 186, 0.5); }
-  .events__card:active {
-    background: #ececec;
     box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5); }
 
 .events__card--s {
@@ -502,7 +498,7 @@ button {
   display: flex;
   padding: 0 5% 14px 5%; }
 
-.events__card-img {
+.events__card-icon {
   height: 36px;
   width: 36px; }
 
@@ -520,7 +516,8 @@ button {
   background-color: #f3f3f3;
   padding: 9px 5% 20px 5%;
   border-radius: 15px;
-  color: #333333; }
+  color: #333333;
+  transition: 0.1s linear; }
 
 .events__card-description {
   margin-top: 0;
@@ -546,6 +543,36 @@ button {
   font-weight: bold;
   font-size: 14px;
   line-height: 16px; }
+
+form {
+  display: flex;
+  justify-content: space-between; }
+
+.form-button {
+  width: 44%;
+  min-height: 44px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  background-color: #e5e5e5; }
+  .form-button:hover {
+    background-color: #eaeaea;
+    box-shadow: 0 2px 6px 0 rgba(197, 186, 186, 0.5); }
+  .form-button:active {
+    background-color: #d8d8d8;
+    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5); }
+  .form-button--confirm {
+    background-color: #ffd93e; }
+    .form-button--confirm:hover {
+      background-color: #ffde58; }
+    .form-button--confirm:active {
+      background-color: #ffd425; }
+
+.cam-image {
+  width: 100%;
+  border-radius: 10px;
+  padding-top: 5px; }
 
 .page-footer {
   display: flex;

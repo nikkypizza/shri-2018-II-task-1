@@ -34,7 +34,7 @@ gulp.task("svgo", function () {
 
 // Genetare SVG sprite from icons starting with "icon-"
 gulp.task("sprite", function () {
-  gulp.src("img/svg/icon_*.svg")
+  gulp.src("img/svg/icon-*.svg")
     .pipe(imagemin([
       imagemin.svgo()
     ]))

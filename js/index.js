@@ -165,18 +165,23 @@ const renderCards = (input) => {
     TEXT: `#ffffff`,
     BACKGROUND: `#db5341`
   };
-  const templateNode = document.querySelector(`template`);
-  const sCardNode = templateNode.content.querySelector(`.events__card--s`);
-  const mCardNode = templateNode.content.querySelector(`.events__card--m`);
-  const lCardNode = templateNode.content.querySelector(`.events__card--l`);
+  const cardsTemplateNode = document.querySelector(`.card-templates`);
+  const sCardNode = cardsTemplateNode.content.querySelector(`.events__card--s`);
+  const mCardNode = cardsTemplateNode.content.querySelector(`.events__card--m`);
+  const lCardNode = cardsTemplateNode.content.querySelector(`.events__card--l`);
 
-  const eventsListNode = document.querySelector('.events__list');
+  const widgetsTemplateNode = document.querySelector(`.widgets-template`);
+  const camPictureNode = widgetsTemplateNode.content.querySelector(`picture`);
+  const statsImgNode = widgetsTemplateNode.content.querySelector(`.events__card-image`);
+
+  const eventsListNode = document.querySelector(`.events__list`);
 
   const fragment = document.createDocumentFragment();
 
-  input.forEach((el) => {
+  for (el of input) {
     let currentElement = null;
 
+    // Выбор карточки
     switch (el.size) {
       case `s`:
         currentElement = sCardNode.cloneNode(true);
@@ -190,24 +195,35 @@ const renderCards = (input) => {
         currentElement.querySelector(`.events__card-description`).textContent = el.description;
         break;
     }
-    currentElement.querySelector(`.events__card-img`).src = `img/svg/icon-${el.icon}.svg`;
     currentElement.querySelector(`.events__card-title`).textContent = el.title;
     currentElement.querySelector(`.events__card-source`).textContent = el.source;
     currentElement.querySelector(`.events__card-time`).textContent = el.time;
 
+    // Добавление виджетов
+    if (el.icon === `cam`) {
+      currentElement.querySelector(`.events__card-content`).appendChild(camPictureNode);
+    }
+    if (el.icon === `stats`) {
+      currentElement.querySelector(`.events__card-content`).appendChild(statsImgNode);
+    }
+
+
+    // Добавление критического состояния
     if (el.type === `critical` && !currentElement.classList.contains(`events__card--s`)) {
       currentElement.style.backgroundColor = criticalColors.BACKGROUND;
-      currentElement.style.color = `#FFFFFF`;
-      currentElement.querySelector(`.events__card-img`).src = `img/svg/icon-${el.icon}-critical.svg`;
+      currentElement.style.color = criticalColors.TEXT;
+      currentElement.querySelector(`.events__card-icon`).src = `img/svg/icon-${el.icon}-critical.svg`;
       currentElement.querySelector(`.events__card-subheader`).style.marginBottom = `16px`;
       currentElement.querySelector(`.events__card-content`).style.padding = `18px 5% 20px 5%`;
     } else if (el.type === `critical`) {
       currentElement.style.backgroundColor = criticalColors.BACKGROUND;
       currentElement.style.color = criticalColors.TEXT;
+    } else {
+      currentElement.querySelector(`.events__card-icon`).src = `img/svg/icon-${el.icon}.svg`;
     }
 
     fragment.appendChild(currentElement);
-  });
+  };
   eventsListNode.appendChild(fragment);
 }
 
