@@ -161,6 +161,10 @@ const INPUT_DATA = JSON.parse(JSON.stringify(INPUT_JSON));
 
 
 const renderCards = (input) => {
+  const criticalColors = {
+    TEXT: `#ffffff`,
+    BACKGROUND: `#db5341`
+  };
   const templateNode = document.querySelector(`template`);
   const sCardNode = templateNode.content.querySelector(`.events__card--s`);
   const mCardNode = templateNode.content.querySelector(`.events__card--m`);
@@ -175,25 +179,34 @@ const renderCards = (input) => {
 
     switch (el.size) {
       case `s`:
-        currentElement = sCardNode;
+        currentElement = sCardNode.cloneNode(true);
         break;
       case `m`:
-        currentElement = mCardNode;
+        currentElement = mCardNode.cloneNode(true);
         currentElement.querySelector(`.events__card-description`).textContent = el.description;
         break;
       case `l`:
-        currentElement = lCardNode;
+        currentElement = lCardNode.cloneNode(true);
         currentElement.querySelector(`.events__card-description`).textContent = el.description;
         break;
     }
-
     currentElement.querySelector(`.events__card-img`).src = `img/svg/icon-${el.icon}.svg`;
     currentElement.querySelector(`.events__card-title`).textContent = el.title;
     currentElement.querySelector(`.events__card-source`).textContent = el.source;
     currentElement.querySelector(`.events__card-time`).textContent = el.time;
 
+    if (el.type === `critical` && !currentElement.classList.contains(`events__card--s`)) {
+      currentElement.style.backgroundColor = criticalColors.BACKGROUND;
+      currentElement.style.color = `#FFFFFF`;
+      currentElement.querySelector(`.events__card-img`).src = `img/svg/icon-${el.icon}-critical.svg`;
+      currentElement.querySelector(`.events__card-subheader`).style.marginBottom = `16px`;
+      currentElement.querySelector(`.events__card-content`).style.padding = `18px 5% 20px 5%`;
+    } else if (el.type === `critical`) {
+      currentElement.style.backgroundColor = criticalColors.BACKGROUND;
+      currentElement.style.color = criticalColors.TEXT;
+    }
 
-    fragment.appendChild(currentElement.cloneNode(true));
+    fragment.appendChild(currentElement);
   });
   eventsListNode.appendChild(fragment);
 }

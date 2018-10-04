@@ -8,9 +8,7 @@ $font-color-secondary: #858585;
 
 // container colors
 $shadow-color: #ececec;
-$contrast-color: #ffd93e;
-$contrast-color-hover: #ffcd00;
-$contrast-color-active: darken($contrast-color, 20%);
+$contrast-color: #db5341;
 
 @mixin event-card-hover () {
   background: #f3f3f3;

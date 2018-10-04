@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="robots" content="noindex">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1">
   <title>Яндекс.Дом</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -61,24 +61,26 @@
   <template>
     <li class="events__card events__card--s">
       <header class="events__card-header">
-        <img class="events__card-img" src="../img/svg/icon-key.svg" alt="Event">
+        <img class="events__card-img" src="img/svg/icon-key.svg" alt="Event">
         <h2 class="events__card-title">Дверь открыта</h2>
       </header>
       <div class="events__card-subheader">
         <span class="events__card-source">Сенсоры потребления</span>
         <span class="events__card-time">18:50, Сегодня</span>
       </div>
+      <!-- <div class="events__card-content"></div> -->
     </li>
 
     <li class="events__card events__card--m">
       <header class="events__card-header">
-        <img class="events__card-img" src="../img/svg/icon-thermal.svg" alt="Event">
+        <img class="events__card-img" src="img/svg/icon-thermal.svg" alt="Event">
         <h2 class="events__card-title">Изменен климатический режим</h2>
       </header>
       <div class="events__card-subheader">
         <span class="events__card-source">Сенсоры  мироклимата</span>
         <span class="events__card-time">18:30, Сегодня</span>
       </div>
+      <div class="events__card-content">
       <p class="events__card-description events__card-description--m">
         Установлен климатический режим "Фиджи"
       </p>
@@ -90,22 +92,29 @@
           Влажность: <span class="events__card-data-value">80 %</span>
         </li>
       </ul>
+      </div>
     </li>
 
     <li class="events__card events__card--l">
       <header class="events__card-header">
-        <img class="events__card-img" src="../img/svg/icon-stats.svg" alt="Event">
+        <img class="events__card-img" src="img/svg/icon-stats.svg" alt="Event">
         <h2 class="events__card-title">Еженедельный отчет по расходам ресурсов</h2>
       </header>
       <div class="events__card-subheader">
         <span class="events__card-source">Сенсоры потребления</span>
         <span class="events__card-time">19:00, Сегодня</span>
       </div>
+      <div class="events__card-content">
       <p class="events__card-description">
         Так держать! За последнюю неделю вы потратили
         на 10% меньше ресурсов, чем неделей ранее.
       </p>
       <img class="events__card-image" src="img/svg/richdata.svg" alt="График расхода ресурсов">
+<!--       <picture>
+          <source type="image/webp" srcset="img/robot-cleaner.webp 1x, img/robot-cleaner2x.webp 2x, img/robot-cleaner3x.webp 3x">
+          <img class="promo__image" src="img/robot-cleaner.png" srcset="img/robot-cleaner2x.png 2x, img/robot-cleaner3x.png 3x" alt="Пылесос испытывает затруднения">
+        </picture>
+ -->      </div>
       </li>
   </template>
 
