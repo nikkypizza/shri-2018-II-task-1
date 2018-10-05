@@ -13,15 +13,14 @@
   min-width: 260px;
   min-height: 61px;
   margin: 0 0 12px 0;
-  background-color: #f3f3f3;
-  border-radius: 20px;
-  transition: 0.1s linear;
   padding-top: 20px;
+  transition: .1s linear;
+  border-radius: 20px;
+  background-color: $background-primary-color;
 
   &:hover {
-    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5);
+    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, .5);
   }
-
 }
 
 .events__card--s {
@@ -31,9 +30,49 @@
 .events__card-title {
   font-size: 14px;
   line-height: 17px;
-  margin: 0 0 0 16px;
   align-self: center;
+  margin: 0 0 0 16px;
 }
+
+/* styles for '...' */
+.events__card-title {
+  /* for set '...' in absolute position */
+  position: relative;
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* use this value to count block height */
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 34px;
+  /* */
+  padding-right: 1em;
+}
+.events__card-title:before {
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0;
+  /* points in the end */
+  content: "...";
+}
+.events__card-title:after {
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  width: 1em;
+  /* set width and height */
+  height: 1em;
+  margin-top: .2em;
+  /* points in the end */
+  content: "";
+  background-color: $background-primary-color;
+}
+
+.events__card-title--critical:after {
+  background-color: $critical-color;
+}
+
 
 .events__card-header {
   display: flex;
@@ -41,16 +80,16 @@
 }
 
 .events__card-icon {
-  height: 36px;
   width: 36px;
+  height: 36px;
 }
 
 .events__card-subheader {
   font-size: 12px;
   line-height: 14px;
+  display: flex;
   margin-bottom: 9px;
   padding: 0 5%;
-  display: flex;
 }
 
 .events__card-source {
@@ -58,98 +97,26 @@
 }
 
 .events__card-content {
-  background-color: #f3f3f3;
   padding: 9px 5% 20px 5%;
-  border-radius: 15px;
+  transition: .1s linear;
   color: #333333;
-  transition: 0.1s linear;
+  border-radius: 15px;
+  background-color: $background-primary-color;
 }
 
 .events__card-description {
-  margin-top: 0;
   font-size: 18px;
   line-height: 21px;
+  margin-top: 0;
   border-radius: 10px;
 }
 
-
 .events__card-description--m {
-  margin-bottom: 24px;
+  margin-bottom: 17px;
 }
 
 .events__card-image {
+  width: 100%;
   height: 144px;
-  width: 100%;
   border-radius: 20px;
-}
-
-.events__card-data {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  line-height: 18px;
-}
-
-.events__card-data-value {
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 16px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-form {
-  display: flex;
-  justify-content: space-between;
-}
-
-.form-button {
-  width: 44%;
-  min-height: 44px;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 23px;
-  background-color: #e5e5e5;
-
-  &:hover {
-    background-color: lighten(#e5e5e5, 2%);
-    box-shadow: 0 2px 6px 0 rgba(197, 186, 186, 0.5);
-  }
-
-  &:active {
-    background-color: darken(#e5e5e5, 5%);
-    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5);
-  }
-
-
-  &--confirm {
-    background-color: $contrast-color;
-
-    &:hover {
-      background-color: lighten($contrast-color, 5%);
-    }
-
-    &:active {
-      background-color: darken($contrast-color, 5%);
-    }
-  }
-
-}
-
-.cam-image {
-  width: 100%;
-  // min-height: 248px;
-  border-radius: 10px;
-  padding-top: 5px;
 }

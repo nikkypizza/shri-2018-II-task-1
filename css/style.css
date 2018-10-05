@@ -411,6 +411,9 @@ button {
   border: none;
   background-color: transparent; }
 
+.display-none {
+  display: none; }
+
 .page-header {
   position: -webkit-sticky;
   position: sticky;
@@ -478,10 +481,10 @@ button {
   min-width: 260px;
   min-height: 61px;
   margin: 0 0 12px 0;
-  background-color: #f3f3f3;
+  padding-top: 20px;
+  transition: .1s linear;
   border-radius: 20px;
-  transition: 0.1s linear;
-  padding-top: 20px; }
+  background-color: #f3f3f3; }
   .events__card:hover {
     box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5); }
 
@@ -491,88 +494,263 @@ button {
 .events__card-title {
   font-size: 14px;
   line-height: 17px;
-  margin: 0 0 0 16px;
-  align-self: center; }
+  align-self: center;
+  margin: 0 0 0 16px; }
+
+/* styles for '...' */
+.events__card-title {
+  /* for set '...' in absolute position */
+  position: relative;
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* use this value to count block height */
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 34px;
+  /* */
+  padding-right: 1em; }
+
+.events__card-title:before {
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0;
+  /* points in the end */
+  content: "..."; }
+
+.events__card-title:after {
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  width: 1em;
+  /* set width and height */
+  height: 1em;
+  margin-top: .2em;
+  /* points in the end */
+  content: "";
+  background-color: #f3f3f3; }
+
+.events__card-title--critical:after {
+  background-color: #db5341; }
 
 .events__card-header {
   display: flex;
   padding: 0 5% 14px 5%; }
 
 .events__card-icon {
-  height: 36px;
-  width: 36px; }
+  width: 36px;
+  height: 36px; }
 
 .events__card-subheader {
   font-size: 12px;
   line-height: 14px;
+  display: flex;
   margin-bottom: 9px;
-  padding: 0 5%;
-  display: flex; }
+  padding: 0 5%; }
 
 .events__card-source {
   margin-right: auto; }
 
 .events__card-content {
-  background-color: #f3f3f3;
   padding: 9px 5% 20px 5%;
-  border-radius: 15px;
+  transition: .1s linear;
   color: #333333;
-  transition: 0.1s linear; }
+  border-radius: 15px;
+  background-color: #f3f3f3; }
 
 .events__card-description {
-  margin-top: 0;
   font-size: 18px;
   line-height: 21px;
+  margin-top: 0;
   border-radius: 10px; }
 
 .events__card-description--m {
-  margin-bottom: 24px; }
+  margin-bottom: 17px; }
 
 .events__card-image {
-  height: 144px;
   width: 100%;
+  height: 144px;
   border-radius: 20px; }
 
-.events__card-data {
+.widget-music__artist {
+  display: flex;
+  padding-bottom: 13px; }
+
+.widget-music__album-cover {
+  width: 53px;
+  height: 53px;
+  margin-right: 15px;
+  border-radius: 10px; }
+
+.widget-music__player {
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
-  line-height: 18px; }
+  overflow: hidden;
+  flex-direction: column;
+  width: 100%; }
 
-.events__card-data-value {
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 16px; }
+.widget-music__artist-name {
+  font-size: 18px;
+  line-height: 21px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
 
-form {
+.widget-music__song-slider {
+  width: 100%;
+  padding-bottom: 7px;
+  background-color: transparent;
+  -webkit-appearance: none; }
+  .widget-music__song-slider:focus {
+    outline: none; }
+  .widget-music__song-slider::-webkit-slider-runnable-track {
+    height: 2px;
+    border: none;
+    border-radius: 3px;
+    background-color: #979797; }
+  .widget-music__song-slider::-webkit-slider-thumb {
+    width: 6px;
+    height: 20px;
+    margin-top: -8px;
+    border: none;
+    border-radius: 5%;
+    background-color: #d8d8d8;
+    -webkit-appearance: none; }
+  .widget-music__song-slider::-moz-range-track {
+    height: 2px;
+    border: none;
+    border-radius: 3px;
+    background-color: #979797; }
+  .widget-music__song-slider::-moz-range-thumb {
+    width: 6px;
+    height: 20px;
+    border: none;
+    border-radius: 5%;
+    background-color: #d8d8d8; }
+
+.widget-music__song-state {
+  display: flex;
+  justify-content: space-between;
+  height: 25px;
+  margin-bottom: -5px; }
+
+.widget-music__song-length {
+  font-size: 14px;
+  line-height: 17px;
+  padding-left: 20px;
+  color: #a1a1a1; }
+
+.widget-music__song-button {
+  width: 53px;
+  height: 53px;
+  margin-right: 19px;
+  padding: 0;
+  background-image: url("../img/svg/song-prev.svg"); }
+
+.widget-music__song-button--next {
+  margin-right: 17px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.widget-music__controls {
   display: flex;
   justify-content: space-between; }
 
-.form-button {
+.widget-music__form {
+  display: flex;
+  align-items: center;
+  width: 76%; }
+
+.widget-music__button-wrapper {
+  display: flex; }
+
+.widget-music__volume-input {
+  width: 100%;
+  margin-right: auto;
+  padding-bottom: 7px;
+  background-color: transparent;
+  -webkit-appearance: none; }
+  .widget-music__volume-input:focus {
+    outline: none; }
+  .widget-music__volume-input::-webkit-slider-runnable-track {
+    height: 3px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d8d8d8; }
+  .widget-music__volume-input::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    border: none;
+    border-radius: 50%;
+    background-color: #605757;
+    -webkit-appearance: none; }
+  .widget-music__volume-input::-moz-range-track {
+    height: 3px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d8d8d8; }
+  .widget-music__volume-input::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border: none;
+    border-radius: 50%;
+    background-color: #605757; }
+
+.widget-music__volume-output {
+  font-size: 14px;
+  align-self: center;
+  padding-left: 20px;
+  color: #a1a1a1; }
+
+.widget-temperature {
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  justify-content: space-between; }
+
+.widget-temperature-value {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 16px; }
+
+.widget-fridge {
+  display: flex;
+  justify-content: space-between; }
+
+.widget-fridge__btn {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 23px;
   width: 44%;
   min-height: 44px;
   border-radius: 8px;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 23px;
   background-color: #e5e5e5; }
-  .form-button:hover {
+  .widget-fridge__btn:hover {
     background-color: #eaeaea;
     box-shadow: 0 2px 6px 0 rgba(197, 186, 186, 0.5); }
-  .form-button:active {
+  .widget-fridge__btn:active {
     background-color: #d8d8d8;
     box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5); }
-  .form-button--confirm {
+  .widget-fridge__btn--confirm {
     background-color: #ffd93e; }
-    .form-button--confirm:hover {
+    .widget-fridge__btn--confirm:hover {
       background-color: #ffde58; }
-    .form-button--confirm:active {
+    .widget-fridge__btn--confirm:active {
       background-color: #ffd425; }
 
-.cam-image {
+.widget-cam__img {
   width: 100%;
-  border-radius: 10px;
-  padding-top: 5px; }
+  padding-top: 5px;
+  border-radius: 10px; }
+
+.widget-cam__data {
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0 13px 0; }
 
 .page-footer {
   display: flex;

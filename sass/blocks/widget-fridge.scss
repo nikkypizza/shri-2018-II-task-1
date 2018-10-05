@@ -1,0 +1,37 @@
+.widget-fridge {
+  display: flex;
+  justify-content: space-between;
+}
+
+.widget-fridge__btn {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 23px;
+  width: 44%;
+  min-height: 44px;
+  border-radius: 8px;
+  background-color: #e5e5e5;
+
+  &:hover {
+    background-color: lighten(#e5e5e5, 2%);
+    box-shadow: 0 2px 6px 0 rgba(197, 186, 186, .5);
+  }
+
+  &:active {
+    background-color: darken(#e5e5e5, 5%);
+    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, .5);
+  }
+
+
+  &--confirm {
+    background-color: $contrast-color;
+
+    &:hover {
+      background-color: lighten($contrast-color, 5%);
+    }
+
+    &:active {
+      background-color: darken($contrast-color, 5%);
+    }
+  }
+}

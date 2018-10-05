@@ -159,65 +159,76 @@ const INPUT_JSON = {
 
 const INPUT_DATA = JSON.parse(JSON.stringify(INPUT_JSON));
 
-
 const renderCards = (input) => {
   const criticalColors = {
     TEXT: `#ffffff`,
     BACKGROUND: `#db5341`
   };
-  const cardsTemplateNode = document.querySelector(`.card-templates`);
-  const sCardNode = cardsTemplateNode.content.querySelector(`.events__card--s`);
-  const mCardNode = cardsTemplateNode.content.querySelector(`.events__card--m`);
-  const lCardNode = cardsTemplateNode.content.querySelector(`.events__card--l`);
+  const eventsListNode = document.querySelector(`.events__list`);
+  const cardNode = document.querySelector(`.card-template`).content.querySelector(`.events__card`);
 
   const widgetsTemplateNode = document.querySelector(`.widgets-template`);
-  const camPictureNode = widgetsTemplateNode.content.querySelector(`picture`);
+  const camWidgetNode = widgetsTemplateNode.content.querySelector(`.widget-cam`);
+  const fridgeWidgetNode = widgetsTemplateNode.content.querySelector(`.widget-fridge`);
+  const tempWidgetNode = widgetsTemplateNode.content.querySelector(`.widget-temperature`);
+  const musicWidgetNode = widgetsTemplateNode.content.querySelector(`.widget-music`);
   const statsImgNode = widgetsTemplateNode.content.querySelector(`.events__card-image`);
-
-  const eventsListNode = document.querySelector(`.events__list`);
 
   const fragment = document.createDocumentFragment();
 
   for (el of input) {
-    let currentElement = null;
+    currentElement = cardNode.cloneNode(true);
 
-    // Выбор карточки
-    switch (el.size) {
-      case `s`:
-        currentElement = sCardNode.cloneNode(true);
-        break;
-      case `m`:
-        currentElement = mCardNode.cloneNode(true);
-        currentElement.querySelector(`.events__card-description`).textContent = el.description;
-        break;
-      case `l`:
-        currentElement = lCardNode.cloneNode(true);
-        currentElement.querySelector(`.events__card-description`).textContent = el.description;
-        break;
-    }
+    currentElement.classList.add(`events__card--${el.size}`)
     currentElement.querySelector(`.events__card-title`).textContent = el.title;
     currentElement.querySelector(`.events__card-source`).textContent = el.source;
     currentElement.querySelector(`.events__card-time`).textContent = el.time;
 
     // Добавление виджетов
-    if (el.icon === `cam`) {
-      currentElement.querySelector(`.events__card-content`).appendChild(camPictureNode);
-    }
-    if (el.icon === `stats`) {
-      currentElement.querySelector(`.events__card-content`).appendChild(statsImgNode);
+    if (el.data) {
+      const cardContentNode = currentElement.querySelector(`.events__card-content`);
+
+      switch (el.icon) {
+        case `cam`:
+          cardContentNode.appendChild(camWidgetNode.cloneNode(true));
+          break;
+        case `stats`:
+          cardContentNode.appendChild(statsImgNode.cloneNode(true));
+          break;
+        case `fridge`:
+          cardContentNode.appendChild(fridgeWidgetNode.cloneNode(true));
+          break;
+        case `thermal`:
+          cardContentNode.appendChild(tempWidgetNode.cloneNode(true));
+          currentElement.querySelector(`.widget-temperature-value--temp`).textContent = `${el.data.temperature} C`;
+          currentElement.querySelector(`.widget-temperature-value--humidity`).textContent = `${el.data.humidity} %`;
+          break;
+        case `music`:
+          cardContentNode.appendChild(musicWidgetNode.cloneNode(true));
+          currentElement.querySelector(`.widget-music__album-cover`).src = el.data.albumcover;
+          currentElement.querySelector(`.widget-music__artist-name`).textContent = `${el.data.artist} - ${el.data.track.name}`;
+          currentElement.querySelector(`.widget-music__song-length`).textContent = el.data.track.length;
+          currentElement.querySelector(`.widget-music__volume-input`).value = el.data.volume;
+          currentElement.querySelector(`.widget-music__volume-output`).textContent = `${el.data.volume}%`;
+          break;
+      }
     }
 
+    if (el.size === `s` && !el.description) {
+      currentElement.querySelector(`.events__card-content`).classList.add(`display-none`);
+    } else {
+      currentElement.querySelector(`.events__card-description`).textContent = el.description;
+      currentElement.style.paddingBottom = 0;
+    }
 
     // Добавление критического состояния
-    if (el.type === `critical` && !currentElement.classList.contains(`events__card--s`)) {
+    if (el.type === `critical`) {
       currentElement.style.backgroundColor = criticalColors.BACKGROUND;
       currentElement.style.color = criticalColors.TEXT;
       currentElement.querySelector(`.events__card-icon`).src = `img/svg/icon-${el.icon}-critical.svg`;
       currentElement.querySelector(`.events__card-subheader`).style.marginBottom = `16px`;
-      currentElement.querySelector(`.events__card-content`).style.padding = `18px 5% 20px 5%`;
-    } else if (el.type === `critical`) {
-      currentElement.style.backgroundColor = criticalColors.BACKGROUND;
-      currentElement.style.color = criticalColors.TEXT;
+      currentElement.querySelector(`.events__card-content`).style.padding = `18px 5% 1px 5%`;
+      currentElement.querySelector(`.events__card-title`).classList.add(`events__card-title--critical`);
     } else {
       currentElement.querySelector(`.events__card-icon`).src = `img/svg/icon-${el.icon}.svg`;
     }
