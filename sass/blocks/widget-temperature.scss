@@ -10,3 +10,15 @@
   font-weight: bold;
   line-height: 16px;
 }
+
+@media ($desktop-width) {
+  .widget-temperature {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .widget-temperature-value {
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
