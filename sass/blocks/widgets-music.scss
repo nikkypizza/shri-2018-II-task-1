@@ -1,4 +1,3 @@
-
 .widget-music__artist {
   display: flex;
   padding-bottom: 13px;
@@ -168,9 +167,9 @@
 }
 
 @media ($desktop-width) {
-.widget-music__artist-name {
-  font-size: 20px;
-  line-height: 23px;
-}
+  .widget-music__artist-name {
+    font-size: 20px;
+    line-height: 23px;
+  }
 
 }

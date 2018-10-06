@@ -214,7 +214,7 @@ const renderCards = (input) => {
       }
     }
 
-    if (el.size === `s` && !el.description) {
+    if (!el.description) {
       currentElement.querySelector(`.events__card-content`).classList.add(`display-none`);
     } else {
       currentElement.querySelector(`.events__card-description`).textContent = el.description;
@@ -222,15 +222,19 @@ const renderCards = (input) => {
     }
 
     // Добавление критического состояния
-    if (el.type === `critical`) {
-      currentElement.style.backgroundColor = criticalColors.BACKGROUND;
-      currentElement.style.color = criticalColors.TEXT;
-      currentElement.querySelector(`.events__card-icon`).src = `img/svg/icon-${el.icon}-critical.svg`;
-      currentElement.querySelector(`.events__card-subheader`).style.marginBottom = `16px`;
-      currentElement.querySelector(`.events__card-content`).style.padding = `18px 5% 1px 5%`;
-      currentElement.querySelector(`.events__card-title`).classList.add(`events__card-title--critical`);
-    } else {
-      currentElement.querySelector(`.events__card-icon`).src = `img/svg/icon-${el.icon}.svg`;
+    switch (el.type) {
+      case `critical`:
+        currentElement.style.backgroundColor = criticalColors.BACKGROUND;
+        currentElement.style.color = criticalColors.TEXT;
+        currentElement.querySelector(`.events__card-icon`).src = `img/svg/icon-${el.icon}-critical.svg`;
+        currentElement.querySelector(`.events__card-subheader`).style.marginBottom = `16px`;
+        currentElement.querySelector(`.events__card-content`).style.padding = `18px 5% 1px 5%`;
+        currentElement.querySelector(`.events__card-title`).classList.add(`events__card-title--critical`);
+        currentElement.querySelector(`.events__card-btn--close`).style.backgroundImage = `url('../img/svg/icon-cross-critical.svg')`;
+        break;
+      default:
+        currentElement.querySelector(`.events__card-icon`).src = `img/svg/icon-${el.icon}.svg`;
+        break;
     }
 
     fragment.appendChild(currentElement);

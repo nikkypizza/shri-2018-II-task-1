@@ -1,6 +1,10 @@
 // media
+$mobile-l-width: "min-width: 425px";
+$mobile-xl-width: "min-width: 590px"
 $tablet-width: "min-width: 768px";
+$tablet-l-width : "min-width: 1000px";
 $desktop-width: "min-width: 1370px";
+$desktop-l-width: "min-width: 1500px";
 
 // font colors
 $font-color-primary: #333333;
@@ -10,16 +14,15 @@ $font-color-secondary: #858585;
 $shadow-color: #ececec;
 $contrast-color: #ffd93e;
 $critical-color: #db5341;
-
 $background-primary-color: #f3f3f3;
 
 
 @mixin event-card-hover () {
   background: #f3f3f3;
-  box-shadow: 0 2px 6px 0 rgba(197, 186, 186, 0.5);
+  box-shadow: 0 2px 6px 0 rgba(197, 186, 186, .5);
 }
 
 @mixin event-card-active () {
   background: $shadow-color;
-  box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5);
+  box-shadow: 0 5px 6px 0 rgba(197, 186, 186, .5);
 }

@@ -32,8 +32,8 @@
 
 @media ($desktop-width) {
   .page-footer {
-    border-top: 1px solid #f0f0f0;
     flex-direction: row;
+    border-top: 1px solid #f0f0f0;
   }
 
   .page-footer__links {
@@ -54,7 +54,7 @@
 
   .page-footer__copyright {
     font-size: 12px;
-    line-height: 14px; // align-self: flex-start;
+    line-height: 14px;
     margin: 20px 40px 0 auto;
     color: $font-color-secondary;
   }

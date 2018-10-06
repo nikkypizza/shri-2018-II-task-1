@@ -3,6 +3,8 @@
   height: 243px;
   padding-top: 5px;
   border-radius: 10px;
+  background-position: center;
+  background-size: cover;
 }
 
 .webp .widget-cam__img {
@@ -21,7 +23,13 @@
   padding: 7px 0 13px 0;
 }
 
-@media ($tablet-width) {
+@media ($tablet-width) and (-webkit-min-device-pixel-ratio:1.5),
+($tablet-width) and (min-resolution:144dpi),
+($tablet-width) and (min-resolution:1.5dppx) {
+  .widget-cam__data {
+    font-size: 1.3vw;
+  }
+
   .webp .widget-cam__img {
     background-image: url("../img/webp/robot-cleaner@2x.webp");
   }
@@ -31,7 +39,9 @@
   }
 }
 
-@media ($desktop-width) {
+@media ($desktop-width) and (-webkit-min-device-pixel-ratio:1.5),
+($desktop-width) and (min-resolution:144dpi),
+($desktop-width) and (min-resolution:1.5dppx) {
   .webp .widget-cam__img {
     background-image: url("../img/webp/robot-cleaner@3x.webp");
   }
@@ -42,5 +52,11 @@
 
   .widget-cam__data-item {
     display: none;
+  }
+}
+
+@media ($tablet-l-width) {
+  .widget-cam__img {
+    height: 420px;
   }
 }
