@@ -230,7 +230,7 @@ const renderCards = (input) => {
         currentElement.querySelector(`.events__card-subheader`).style.marginBottom = `16px`;
         currentElement.querySelector(`.events__card-content`).style.padding = `18px 5% 1px 5%`;
         currentElement.querySelector(`.events__card-title`).classList.add(`events__card-title--critical`);
-        currentElement.querySelector(`.events__card-btn--close`).style.backgroundImage = `url('../img/svg/icon-cross-critical.svg')`;
+        currentElement.querySelector(`.events__card-btn--close`).style.backgroundImage = `url('img/svg/icon-cross-critical.svg')`;
         break;
       default:
         currentElement.querySelector(`.events__card-icon`).src = `img/svg/icon-${el.icon}.svg`;

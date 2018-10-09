@@ -115,13 +115,14 @@
     </form>
     <!-- Виджет сенсора движения (камера пылесоса) -->
     <div class="widget-cam">
-    <!--
+      <!--
       <picture>
         <source type="image/webp" srcset="img/robot-cleaner.webp 1x, img/robot-cleaner2x.webp 2x, img/robot-cleaner3x.webp 3x">
         <img class="widget-cam__img" src="img/robot-cleaner.png" srcset="img/robot-cleaner2x.png 2x, img/robot-cleaner3x.png 3x" alt="Пылесос испытывает затруднения">
       </picture>
     -->
-      <div class="widget-cam__img"></div>
+      <div class="widget-cam__img" touch-action="none">
+      </div>
       <ul class="widget-cam__data">
         <li class="widget-cam__data-item">
           Приближение: <span class="widget-cam__data-zoom">78 %</span>
@@ -135,6 +136,8 @@
   <script src="js/index.js"></script>
   <!-- Modernizr для поддержки фоновых .webp изображений -->
   <script src="js/modernizr-webp-custom.js"></script>
+  <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+  <script src="js/pointer-events.js"></script>
   <!--
      Авторские права
     В проекте использованы ресурсы (иконки) с сайта www.flaticon.com.
