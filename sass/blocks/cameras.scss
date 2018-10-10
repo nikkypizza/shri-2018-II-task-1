@@ -1,0 +1,31 @@
+.cameras {
+  margin: 0 6%;
+  color: $font-color-primary;
+}
+
+.cameras__header {
+  font-size: 24px;
+  line-height: 28px;
+  margin: 10px 0;
+}
+
+@media ($tablet-width) {
+  .cameras__header {
+    font-size: 3.13vw;
+    margin: 2vw 0;
+    transition: .1s linear;
+  }
+}
+
+@media ($tablet-l-width) {
+  .cameras {
+    margin: 0 12.5%;
+  }
+
+  .cameras__header {
+    font-size: 36px;
+    line-height: 42px;
+    margin: 35px 0;
+    transition: .2s linear;
+  }
+}

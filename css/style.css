@@ -420,10 +420,12 @@ button {
   z-index: 1;
   top: 0;
   display: flex;
+  flex-direction: column;
   background-color: rgba(255, 255, 255, 0.97); }
 
-.page-header__nav-list {
-  display: none; }
+.page-header__wrapper {
+  display: flex;
+  width: 100%; }
 
 .page-header__logo {
   margin: 12px 19px 0 19px;
@@ -440,7 +442,19 @@ button {
   background-position: center; }
 
 .page-header__nav-list-item {
-  margin: 26px 26px 26px 0; }
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+  width: 100%; }
+  .page-header__nav-list-item a {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 20px;
+    opacity: .6;
+    color: #333333; }
+  .page-header__nav-list-item--active a {
+    pointer-events: none;
+    opacity: 1; }
   .page-header__nav-list-item a:hover {
     color: gray; }
   .page-header__nav-list-item a:active {
@@ -448,21 +462,17 @@ button {
 
 @media (min-width: 768px) {
   .page-header {
+    flex-direction: row;
     border-bottom: 1px solid #f0f0f0; }
+  .page-header__wrapper {
+    width: auto; }
   .page-header__logo {
     margin: 26px 18px 15px 40px;
     transition: .3s linear; }
   .page-header__nav-list-item {
-    margin: 22px 28px 26px 0; }
-    .page-header__nav-list-item a {
-      font-size: 16px;
-      font-weight: bold;
-      line-height: 20px;
-      opacity: .6;
-      color: #333333; }
-    .page-header__nav-list-item--active a {
-      pointer-events: none;
-      opacity: 1; }
+    margin: 22px 28px 26px 0;
+    padding: 0;
+    border-bottom: none; }
   .page-header__nav-list {
     display: flex;
     margin-bottom: 9px; }
@@ -615,6 +625,9 @@ button {
       padding: 0 5% 14px 3%; }
     .events__card--l .events__card-subheader {
       padding: 0 3%; }
+  .events__card-title {
+    font-size: 23px;
+    line-height: 28px; }
   .events__card-image {
     height: 325px; }
   .events__header {
@@ -625,9 +638,6 @@ button {
   .events__card-subheader {
     font-size: 18px;
     line-height: 21px; }
-  .events__card-title {
-    font-size: 23px;
-    line-height: 28px; }
   .events__card-description {
     font-size: 20px;
     line-height: 28px; }
@@ -638,15 +648,15 @@ button {
 @media (min-width: 1500px) {
   .events__list {
     grid-template-columns: repeat(8, 1fr); }
-    .events__list .events__card--l {
-      grid-column: span 4;
-      grid-row: span 2; }
+    .events__list .events__card--s {
+      grid-column: span 2;
+      grid-row: span 1; }
     .events__list .events__card--m {
       grid-column: span 3;
       grid-row: span 1; }
-    .events__list .events__card--s {
-      grid-column: span 2;
-      grid-row: span 1; } }
+    .events__list .events__card--l {
+      grid-column: span 4;
+      grid-row: span 2; } }
 
 .widget-music__artist {
   display: flex;
@@ -834,7 +844,8 @@ button {
   padding-top: 5px;
   border-radius: 10px;
   background-position: center;
-  background-size: cover; }
+  background-size: cover;
+  touch-action: none; }
 
 .webp .widget-cam__img {
   background-image: url("../img/webp/robot-cleaner.webp"); }
@@ -868,6 +879,30 @@ button {
 @media (min-width: 1000px) {
   .widget-cam__img {
     height: 420px; } }
+
+.cameras {
+  margin: 0 6%;
+  color: #333333; }
+
+.cameras__header {
+  font-size: 24px;
+  line-height: 28px;
+  margin: 10px 0; }
+
+@media (min-width: 768px) {
+  .cameras__header {
+    font-size: 3.13vw;
+    margin: 2vw 0;
+    transition: .1s linear; } }
+
+@media (min-width: 1000px) {
+  .cameras {
+    margin: 0 12.5%; }
+  .cameras__header {
+    font-size: 36px;
+    line-height: 42px;
+    margin: 35px 0;
+    transition: .2s linear; } }
 
 .page-footer {
   display: flex;

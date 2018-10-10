@@ -12,10 +12,12 @@
 
 <body>
   <header class="page-header">
-    <a href="#" title="На главную" class="page-header__logo">
-      <img src="img/svg/ya-logo.svg" width="113" height="38" alt="Яндекс.Дом">
-    </a>
-    <button type="button" class="page-header__menu-toggler" title="Открыть меню"></button>
+    <div class="page-header__wrapper">
+      <a href="#" title="На главную" class="page-header__logo">
+        <img src="img/svg/ya-logo.svg" width="113" height="38" alt="Яндекс.Дом">
+      </a>
+      <button type="button" class="page-header__menu-toggler" title="Открыть меню"></button>
+    </div>
     <nav class="page-header__nav">
       <ul class="page-header__nav-list">
         <li class="page-header__nav-list-item page-header__nav-list-item--active">
@@ -29,6 +31,9 @@
         </li>
         <li class="page-header__nav-list-item">
           <a href="#">Сценарии</a>
+        </li>
+        <li class="page-header__nav-list-item">
+          <a href="surveillance.html">Видеонаблюдение</a>
         </li>
       </ul>
     </nav>
@@ -133,6 +138,7 @@
       </ul>
     </div>
   </template>
+  <script src="js/page-nav.js"></script>
   <script src="js/templater.js"></script>
   <!-- Modernizr для поддержки фоновых .webp изображений -->
   <script src="js/pointer-events.js"></script>
