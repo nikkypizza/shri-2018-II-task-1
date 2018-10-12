@@ -19,7 +19,6 @@
       const videoInputNodes = cameraListItem.querySelectorAll(`.video-controls__input`);
 
       videoControlsNode.style = ``;
-      videoNode.style = ``;
 
       // Прячем неактивные видео списка
       cameraListItem.classList.add(`cameras__list-item--active`);
@@ -33,7 +32,7 @@
       cameraListItem.style.webkitAnimationName = `videoItemOpenAnim`
       cameraListItem.style.animationPlayState = `running`;
       videoNode.setAttribute(`controls`, `null`);
-      videoNode.removeAttribute(`muted`, `null`);
+      videoNode.removeAttribute(`muted`);
 
       videoControlsNode.classList.remove(`visually-hidden`);
       videoControlsNode.style.animationPlayState = `running`;
@@ -63,7 +62,7 @@
         // Убираем контролы <video>, прячем меню
         cameraListItem.style.webkitAnimationName = `videoItemCloseAnim`;
         cameraListItem.style.animationPlayState = `running`;
-        videoNode.removeAttribute(`controls`, `null`);
+        videoNode.removeAttribute(`controls`);
         videoNode.setAttribute(`muted`, `null`);
 
         videoControlsNode.style.webkitAnimationName = `videoControlsCloseAnim`;
@@ -89,5 +88,23 @@
       });
     });
   };
+
+  const initStreams = (videosArr) => {
+    const initVideo = (video, url) => {
+      video.dataset.source = url;
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        video.play();
+      }
+    }
+    const videoUrlTitles = [`sosed`, `cat`, `dog`, `hall`];
+    videosArr.forEach(function(el, index) {
+      initVideo(el, `http://localhost:9191/master?url=http%3A%2F%2Flocalhost%3A3102%2Fstreams%2F${videoUrlTitles[index]}%2Fmaster.m3u8`);
+    });
+  }
+
+  initStreams(videoNodes);
 
 })();
