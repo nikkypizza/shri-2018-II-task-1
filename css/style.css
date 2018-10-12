@@ -414,6 +414,16 @@ button {
 .display-none {
   display: none; }
 
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0; }
+
 .page-header {
   position: -webkit-sticky;
   position: sticky;
@@ -576,15 +586,15 @@ button {
     grid-template-columns: repeat(2, 1fr); }
   .events__card {
     margin: 0; }
-  .events__card--s {
-    grid-column: span 1;
-    grid-row: span 1; }
-  .events__card--l {
-    grid-column: span 2;
-    grid-row: span 3; }
-  .events__card--m {
-    grid-column: span 1;
-    grid-row: span 1; } }
+    .events__card--s {
+      grid-column: span 1;
+      grid-row: span 1; }
+    .events__card--l {
+      grid-column: span 2;
+      grid-row: span 3; }
+    .events__card--m {
+      grid-column: span 1;
+      grid-row: span 1; } }
 
 @media (min-width: 768px) {
   .events__card:hover .events__card-btn {
@@ -826,11 +836,9 @@ button {
   border-radius: 8px;
   background-color: #e5e5e5; }
   .widget-fridge__btn:hover {
-    background-color: #eaeaea;
-    box-shadow: 0 2px 6px 0 rgba(197, 186, 186, 0.5); }
+    background-color: #eaeaea; }
   .widget-fridge__btn:active {
-    background-color: #d8d8d8;
-    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5); }
+    background-color: #d8d8d8; }
   .widget-fridge__btn--confirm {
     background-color: #ffd93e; }
     .widget-fridge__btn--confirm:hover {
@@ -884,6 +892,59 @@ button {
   margin: 0 6%;
   color: #333333; }
 
+.cameras__list {
+  display: grid;
+  grid-gap: 10px; }
+
+.cameras__list-item {
+  left: 2%;
+  width: 100%;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
+@-webkit-keyframes videoItemOpenAnim {
+  from {
+    width: 35vw; }
+  to {
+    position: absolute;
+    width: 95vw; } }
+
+@keyframes videoItemOpenAnim {
+  from {
+    width: 35vw; }
+  to {
+    position: absolute;
+    width: 95vw; } }
+
+@-webkit-keyframes videoItemCloseAnim {
+  from {
+    position: absolute;
+    width: 95vw; }
+  to {
+    position: static;
+    width: 100%; } }
+
+@keyframes videoItemCloseAnim {
+  from {
+    position: absolute;
+    width: 95vw; }
+  to {
+    position: static;
+    width: 100%; } }
+
+.cameras__list-item-video {
+  width: 100%; }
+  .cameras__list-item-video:hover .video-controls {
+    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5); }
+
 .cameras__header {
   font-size: 24px;
   line-height: 28px;
@@ -893,16 +954,139 @@ button {
   .cameras__header {
     font-size: 3.13vw;
     margin: 2vw 0;
-    transition: .1s linear; } }
+    transition: .1s linear; }
+  .cameras__list {
+    grid-template-columns: repeat(2, 1fr); } }
 
 @media (min-width: 1000px) {
   .cameras {
     margin: 0 12.5%; }
+  .cameras__list {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px; }
   .cameras__header {
     font-size: 36px;
     line-height: 42px;
     margin: 35px 0;
     transition: .2s linear; } }
+
+.video-controls {
+  display: flex;
+  margin-top: -7px;
+  -webkit-animation-name: videoControlsOpenAnim;
+          animation-name: videoControlsOpenAnim;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  opacity: 0;
+  border: 2px solid #ffd93e;
+  border-radius: 0 0 15px 15px;
+  background-color: #f3f3f3;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
+@-webkit-keyframes videoControlsOpenAnim {
+  to {
+    opacity: 1; } }
+
+@keyframes videoControlsOpenAnim {
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes videoControlsCloseAnim {
+  to {
+    opacity: 0; } }
+
+@keyframes videoControlsCloseAnim {
+  to {
+    opacity: 0; } }
+
+.video-controls__return-btn {
+  padding: 5px 10px;
+  border: 2px solid;
+  border-top: 0;
+  border-radius: 0 0 15px 15px; }
+  .video-controls__return-btn:hover {
+    background-color: #eaeaea;
+    box-shadow: 0 2px 6px 0 rgba(197, 186, 186, 0.5); }
+  .video-controls__return-btn:active {
+    background-color: #d8d8d8;
+    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5); }
+
+.video-controls__form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding-right: 10px; }
+
+.video-controls__title {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 7px 0;
+  color: #333333; }
+
+.video-controls__equalizer {
+  width: 100%;
+  height: 10px;
+  margin: 5px 0 5px 10px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #5eae0b 20%, #fbfa03 40%, #f89f04 70%, #f73d04 90%); }
+
+.video-controls__equalizer-level {
+  width: 80%;
+  height: 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  mix-blend-mode: exclusion; }
+
+.video-controls__input {
+  width: 100%;
+  padding-bottom: 7px;
+  background-color: transparent;
+  -webkit-appearance: none; }
+  .video-controls__input:focus {
+    outline: none; }
+  .video-controls__input::-webkit-slider-runnable-track {
+    height: 3px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d8d8d8; }
+  .video-controls__input::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    border: none;
+    border-radius: 50%;
+    background-color: #605757;
+    -webkit-appearance: none; }
+  .video-controls__input::-moz-range-track {
+    height: 3px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d8d8d8; }
+  .video-controls__input::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border: none;
+    border-radius: 50%;
+    background-color: #605757; }
+
+.video-controls__output {
+  font-size: 14px;
+  color: #a1a1a1; }
+
+@media (min-width: 1000px) {
+  .video-controls__title {
+    font-size: 18px;
+    line-height: 21px; } }
 
 .page-footer {
   display: flex;

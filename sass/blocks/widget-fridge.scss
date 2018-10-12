@@ -14,12 +14,10 @@
 
   &:hover {
     background-color: lighten(#e5e5e5, 2%);
-    box-shadow: 0 2px 6px 0 rgba(197, 186, 186, .5);
   }
 
   &:active {
     background-color: darken(#e5e5e5, 5%);
-    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, .5);
   }
 
 
