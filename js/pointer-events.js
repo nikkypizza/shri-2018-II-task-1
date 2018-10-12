@@ -1,3 +1,5 @@
+(function() {
+
   const cameraNode = document.querySelector(`.widget-cam__img`);
   var evtCache = [];
   var prevDiff = -1;
@@ -70,3 +72,5 @@
   };
 
   initTouchScroll(cameraNode);
+
+})();
