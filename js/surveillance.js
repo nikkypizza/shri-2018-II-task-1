@@ -1,13 +1,20 @@
 const ESC_KEYCODE = 27;
 const camerasListItemNodes = document.querySelectorAll(`.cameras__list-item`);
 const videoNodes = document.querySelectorAll(`.cameras__list-item-video`);
+let videoClickCounter = 0;
 
 for (el of videoNodes) {
   el.addEventListener(`click`, (evt) => {
+    videoClickCounter++;
+    if (videoClickCounter > 1) {
+      return;
+    }
+
     const videoNode = evt.target;
     const cameraListItem = videoNode.parentNode;
     const videoControlsNode = cameraListItem.querySelector(`.video-controls`);
     const showAllBtn = cameraListItem.querySelector(`.video-controls__return-btn`);
+    const videoInputNodes = cameraListItem.querySelectorAll(`.video-controls__input`);
 
     videoControlsNode.style = ``;
     videoNode.style = ``;
@@ -29,10 +36,27 @@ for (el of videoNodes) {
     videoControlsNode.classList.remove(`visually-hidden`);
     videoControlsNode.style.animationPlayState = `running`;
 
+    //CSS фильтры
+    for (input of videoInputNodes) {
+      const inputId = input.getAttribute(`id`);
+      let brightnessValue = 1;
+      let contrastValue = 100;
+
+      input.addEventListener(`input`, () => {
+        if (inputId.startsWith(`brightness`)) {
+          brightnessValue = input.value / 100;
+        };
+        if (inputId.startsWith(`contrast`)) {
+          contrastValue = input.value;
+        };
+        videoNode.style.filter = `brightness(${brightnessValue}) contrast(${contrastValue}%)`;
+      })
+    }
 
     const onModalClose = () => {
       cameraListItem.style = ``;
       videoControlsNode.style = ``;
+      videoClickCounter = 0;
 
       // Убираем контролы <video>, прячем меню
       cameraListItem.style.webkitAnimationName = `videoItemCloseAnim`;
@@ -56,8 +80,10 @@ for (el of videoNodes) {
 
     window.addEventListener(`keydown`, (evt) => {
       if (evt.keyCode === ESC_KEYCODE) {
-        onModalClose();
-      }
+        if (document.querySelector(`.cameras__list-item--active`)) {
+          onModalClose();
+        }
+      };
     });
   });
 };
