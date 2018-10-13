@@ -1,6 +1,9 @@
 (function() {
 
-  const ESC_KEYCODE = 27;
+  const keyCodes = {
+    ESC: 27,
+    ENTER: 13
+  }
   const initialValues = {
     BRIGHTNESS_INITIAL_VALUE: 1,
     CONTRAST_INITIAL_VALUE: 100,
@@ -39,7 +42,7 @@
       cameraListItem.style.webkitAnimationName = `videoItemOpenAnim`
       cameraListItem.style.animationPlayState = `running`;
       videoNode.setAttribute(`controls`, ``);
-      videoNode.removeAttribute(`muted`);
+      videoNode.muted = false;
 
       videoControlsNode.classList.remove(`visually-hidden`);
       videoControlsNode.style.animationPlayState = `running`;
@@ -71,7 +74,7 @@
         cameraListItem.style.webkitAnimationName = `videoItemCloseAnim`;
         cameraListItem.style.animationPlayState = `running`;
         videoNode.removeAttribute(`controls`);
-        videoNode.setAttribute(`muted`, ``);
+        videoNode.muted = true;
 
         videoControlsNode.style.webkitAnimationName = `videoControlsCloseAnim`;
         videoControlsNode.classList.add(`visually-hidden`);
@@ -88,13 +91,20 @@
       showAllBtn.addEventListener(`click`, onModalClose);
 
       window.addEventListener(`keydown`, (evt) => {
-        if (evt.keyCode === ESC_KEYCODE) {
+        if (evt.keyCode === keyCodes.ESC) {
           if (document.querySelector(`.cameras__list-item--active`)) {
             onModalClose();
           }
         };
       });
     });
+    console.log(el);
+
+    el.addEventListener(`keyup`, (evt) => {
+      if (evt.keyCode === keyCodes.ENTER) {
+        console.log(`Развернуть модельное окно по нажатию на ENTER`);
+      };
+    })
   };
 
   const initStreams = (videosArr) => {
