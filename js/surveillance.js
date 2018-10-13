@@ -1,9 +1,16 @@
 (function() {
 
   const ESC_KEYCODE = 27;
+  const initialValues = {
+    BRIGHTNESS_INITIAL_VALUE: 1,
+    CONTRAST_INITIAL_VALUE: 100,
+    CLICK_COUNTER_INITIAL: 0
+  }
   const camerasListItemNodes = document.querySelectorAll(`.cameras__list-item`);
   const videoNodes = document.querySelectorAll(`.cameras__list-item-video`);
-  let videoClickCounter = 0;
+  let videoClickCounter = initialValues.CLICK_COUNTER_INITIAL;
+  let brightnessValue = initialValues.BRIGHTNESS_INITIAL_VALUE;
+  let contrastValue = initialValues.CONTRAST_INITIAL_VALUE;
 
   for (el of videoNodes) {
     el.addEventListener(`click`, (evt) => {
@@ -31,39 +38,40 @@
       // Добавляем контролы <video>, показываем меню
       cameraListItem.style.webkitAnimationName = `videoItemOpenAnim`
       cameraListItem.style.animationPlayState = `running`;
-      videoNode.setAttribute(`controls`, `null`);
+      videoNode.setAttribute(`controls`, ``);
       videoNode.removeAttribute(`muted`);
 
       videoControlsNode.classList.remove(`visually-hidden`);
       videoControlsNode.style.animationPlayState = `running`;
 
       //CSS фильтры
-      for (input of videoInputNodes) {
-        const inputId = input.getAttribute(`id`);
-        let brightnessValue = 1;
-        let contrastValue = 100;
+      videoInputNodes.forEach((el) => {
+        const inputId = el.getAttribute(`id`);
 
-        input.addEventListener(`input`, () => {
+        el.addEventListener(`input`, () => {
           if (inputId.startsWith(`brightness`)) {
-            brightnessValue = input.value / 100;
+            brightnessValue = el.value / 100;
           };
           if (inputId.startsWith(`contrast`)) {
-            contrastValue = input.value;
+            contrastValue = el.value;
           };
           videoNode.style.filter = `brightness(${brightnessValue}) contrast(${contrastValue}%)`;
         })
-      }
+
+      })
 
       const onModalClose = () => {
         cameraListItem.style = ``;
         videoControlsNode.style = ``;
-        videoClickCounter = 0;
+        videoClickCounter = initialValues.CLICK_COUNTER_INITIAL;
+        brightnessValue = initialValues.BRIGHTNESS_INITIAL_VALUE;
+        contrastValue = initialValues.CONTRAST_INITIAL_VALUE;
 
         // Убираем контролы <video>, прячем меню
         cameraListItem.style.webkitAnimationName = `videoItemCloseAnim`;
         cameraListItem.style.animationPlayState = `running`;
         videoNode.removeAttribute(`controls`);
-        videoNode.setAttribute(`muted`, `null`);
+        videoNode.setAttribute(`muted`, ``);
 
         videoControlsNode.style.webkitAnimationName = `videoControlsCloseAnim`;
         videoControlsNode.classList.add(`visually-hidden`);
