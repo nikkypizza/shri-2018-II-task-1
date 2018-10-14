@@ -11,9 +11,13 @@
   }
   const camerasListItemNodes = document.querySelectorAll(`.cameras__list-item`);
   const videoNodes = document.querySelectorAll(`.cameras__list-item-video`);
+  const canvasNodes = document.querySelectorAll(`.video-controls__sound-level`);
   let videoClickCounter = initialValues.CLICK_COUNTER_INITIAL;
   let brightnessValue = initialValues.BRIGHTNESS_INITIAL_VALUE;
   let contrastValue = initialValues.CONTRAST_INITIAL_VALUE;
+
+  let audioCtx = window.AudioContext || window.webkitAudioContext;
+  let canvas, audioContext, canvasContext, analyser, width, height, dataArray, bufferLength;
 
   for (el of videoNodes) {
     el.addEventListener(`click`, (evt) => {
@@ -60,8 +64,12 @@
           };
           videoNode.style.filter = `brightness(${brightnessValue}) contrast(${contrastValue}%)`;
         })
+      });
 
-      })
+      // https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio
+      audioContext.resume().then(() => {
+        console.log('Playback resumed successfully');
+      });
 
       const onModalClose = () => {
         cameraListItem.style = ``;
@@ -98,7 +106,6 @@
         };
       });
     });
-    console.log(el);
 
     el.addEventListener(`keyup`, (evt) => {
       if (evt.keyCode === keyCodes.ENTER) {
@@ -108,6 +115,8 @@
   };
 
   const initStreams = (videosArr) => {
+    const videoUrlTitles = [`cat`, `sosed`, `dog`, `hall`];
+
     const initVideo = (video, url) => {
       video.dataset.source = url;
       if (Hls.isSupported()) {
@@ -115,14 +124,63 @@
         hls.loadSource(url);
         hls.attachMedia(video);
         video.play();
-      }
-    }
-    const videoUrlTitles = [`sosed`, `cat`, `dog`, `hall`];
+      };
+    };
+
     videosArr.forEach(function(el, index) {
       initVideo(el, `http://localhost:9191/master?url=http%3A%2F%2Flocalhost%3A3102%2Fstreams%2F${videoUrlTitles[index]}%2Fmaster.m3u8`);
     });
-  }
+  };
+
+  const buildAudioGraph = () => {
+    var mediaElement = videoNodes[0];
+    var sourceNode = audioContext.createMediaElementSource(mediaElement);
+
+    analyser = audioContext.createAnalyser();
+
+    analyser.fftSize = 512;
+    bufferLength = analyser.frequencyBinCount;
+    dataArray = new Uint8Array(bufferLength);
+
+    sourceNode.connect(analyser);
+    analyser.connect(audioContext.destination);
+  };
+
+  const visualizeVolumeLevel = () => {
+    requestAnimationFrame(visualizeVolumeLevel);
+
+    analyser.getByteFrequencyData(dataArray);
+
+    canvasContext.fillStyle = `rgb(0, 0, 0)`;
+    canvasContext.clearRect(0, 0, width, height);
+    let barWidth = (width / bufferLength) * 2;
+    let barHeight;
+    let x = 0;
+
+    for (let i = 0; i < bufferLength; i++) {
+      barHeight = dataArray[i] / 6;
+
+      canvasContext.fillStyle = `rgb(${barHeight * 5}, 100, 100)`;
+      canvasContext.fillRect(x, height - barHeight / 2, barWidth, barHeight);
+
+      x += barWidth + 1;
+    };
+  };
+
+  // --- //
 
   initStreams(videoNodes);
 
+  window.onload = function() {
+    audioContext = new audioCtx();
+
+    canvas = canvasNodes[0];
+    width = canvas.width;
+    height = canvas.height;
+    canvasContext = canvas.getContext(`2d`);
+
+    buildAudioGraph();
+
+    requestAnimationFrame(visualizeVolumeLevel);
+  };
 })();

@@ -1033,19 +1033,9 @@ button {
   padding: 7px 0;
   color: #333333; }
 
-.video-controls__equalizer {
-  width: 100%;
-  height: 10px;
-  margin: 5px 0 5px 10px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #5eae0b 20%, #fbfa03 40%, #f89f04 70%, #f73d04 90%); }
-
-.video-controls__equalizer-level {
-  width: 80%;
-  height: 10px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.7);
-  mix-blend-mode: exclusion; }
+.video-controls__sound-level {
+  outline: 2px dashed #ffd93e;
+  width: 80%; }
 
 .video-controls__input {
   width: 100%;

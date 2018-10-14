@@ -43,7 +43,7 @@
       <h1 class="cameras__header">Камеры видеонаблюдения</h1>
       <ul class="cameras__list">
         <li class="cameras__list-item">
-          <video class="cameras__list-item-video" tabindex="0" poster="img/video-posters/poster-1.png" muted src="http://192.168.1.52:3102/5395371e-ceae-4b46-b5d8-d4d192785bea"></video>
+          <video class="cameras__list-item-video" tabindex="0" poster="img/video-posters/poster-cat.png" muted="muted"></video>
           <div class="video-controls visually-hidden">
             <div class="video-controls__form">
               <span class="video-controls__title">Яркость</span>
@@ -53,15 +53,13 @@
               <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput1" oninput="contrastRangeOutput1.value = `${contrastRangeInput1.value}%`">
               <output class="video-controls__output" id="contrastRangeOutput1" for="contrastRangeInput1">100%</output>
               <span class="video-controls__title">Датчик громкости</span>
-              <div class="video-controls__equalizer">
-                <div class="video-controls__equalizer-level"></div>
-              </div>
+              <canvas class="video-controls__sound-level" width="500" height="20"></canvas>
             </div>
             <button class="video-controls__return-btn" type="button">Показать все камеры</button>
           </div>
         </li>
         <li class="cameras__list-item">
-          <video class="cameras__list-item-video" tabindex="0" poster="img/video-posters/poster-2.png" muted src="http://192.168.1.52:3102/f377d3fb-1637-4f34-9ec6-95dde7eb534d"></video>
+          <video class="cameras__list-item-video" tabindex="0" poster="img/video-posters/poster-sosed.png" muted="muted"></video>
           <div class="video-controls visually-hidden">
             <div class="video-controls__form">
               <span class="video-controls__title">Яркость</span>
@@ -71,15 +69,13 @@
               <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput2" oninput="contrastRangeOutput2.value = `${contrastRangeInput2.value}%`">
               <output class="video-controls__output" id="contrastRangeOutput2" for="contrastRangeInput2">100%</output>
               <span class="video-controls__title">Датчик громкости</span>
-              <div class="video-controls__equalizer">
-                <div class="video-controls__equalizer-level"></div>
-              </div>
+              <canvas class="video-controls__sound-level" width="500" height="20"></canvas>
             </div>
             <button class="video-controls__return-btn" type="button">Показать все камеры</button>
           </div>
         </li>
         <li class="cameras__list-item">
-          <video class="cameras__list-item-video" tabindex="0" poster="img/video-posters/poster-3.png" muted src="http://localhost:3102/a4280000-6bcb-4d2d-91e6-052a957809cf"></video>
+          <video class="cameras__list-item-video" tabindex="0" poster="img/video-posters/poster-dog.png" muted="muted"></video>
           <div class="video-controls visually-hidden">
             <div class="video-controls__form">
               <span class="video-controls__title">Яркость</span>
@@ -89,15 +85,13 @@
               <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput3" oninput="contrastRangeOutput3.value = `${contrastRangeInput3.value}%`">
               <output class="video-controls__output" id="contrastRangeOutput3" for="contrastRangeInput3">100%</output>
               <span class="video-controls__title">Датчик громкости</span>
-              <div class="video-controls__equalizer">
-                <div class="video-controls__equalizer-level"></div>
-              </div>
+              <canvas class="video-controls__sound-level" width="500" height="20"></canvas>
             </div>
             <button class="video-controls__return-btn" type="button">Показать все камеры</button>
           </div>
         </li>
         <li class="cameras__list-item">
-          <video class="cameras__list-item-video" tabindex="0" poster="img/video-posters/poster-4.png" muted src="http://localhost:3102/a97c386d-9d52-43e4-babc-87dfcfeb6803"></video>
+          <video class="cameras__list-item-video" tabindex="0" poster="img/video-posters/poster-hall.png" muted="muted"></video>
           <div class="video-controls visually-hidden">
             <div class="video-controls__form">
               <span class="video-controls__title">Яркость</span>
@@ -107,9 +101,7 @@
               <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput4" oninput="contrastRangeOutput4.value = `${contrastRangeInput4.value}%`">
               <output class="video-controls__output" id="contrastRangeOutput4" for="contrastRangeInput4">100%</output>
               <span class="video-controls__title">Датчик громкости</span>
-              <div class="video-controls__equalizer">
-                <div class="video-controls__equalizer-level"></div>
-              </div>
+              <canvas class="video-controls__sound-level" width="500" height="20"></canvas>
             </div>
             <button class="video-controls__return-btn" type="button">Показать все камеры</button>
           </div>
