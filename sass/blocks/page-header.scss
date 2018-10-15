@@ -4,7 +4,7 @@
   top: 0;
   display: flex;
   flex-direction: column;
-  background-color: rgba(256, 256, 256, .97);
+  background-color: rgba(256, 256, 256, 0.97);
 }
 
 .page-header__wrapper {
@@ -14,7 +14,7 @@
 
 .page-header__logo {
   margin: 12px 19px 0 19px;
-  transition: .3s linear;
+  transition: 0.3s linear;
 }
 
 .page-header__menu-toggler {
@@ -38,7 +38,7 @@
     font-size: 16px;
     font-weight: bold;
     line-height: 20px;
-    opacity: .6;
+    opacity: 0.6;
     color: #333333;
   }
 
@@ -68,7 +68,7 @@
 
   .page-header__logo {
     margin: 26px 18px 15px 40px;
-    transition: .3s linear;
+    transition: 0.3s linear;
   }
 
   .page-header__nav-list-item {

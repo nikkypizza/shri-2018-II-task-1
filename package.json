@@ -4,7 +4,8 @@
   "description": "В этом репозитории находятся материалы тестового задания по вёрстке для [14-й Школы разработки интерфейсов](https://academy.yandex.ru/events/frontend/shri_msk-2018-2) (осень 2018, Москва, Санкт-Петербург, Симферополь).",
   "main": "index.html",
   "scripts": {
-    "stylelint": "stylelint 'sass/**/*.scss' --syntax scss"
+    "stylelint": "stylelint 'sass/**/*.scss' --syntax scss --fix",
+    "eslint": "eslint \"./js/*.js\" --fix"
   },
   "dependencies": {},
   "devDependencies": {
@@ -26,7 +27,9 @@
     "imagemin-pngquant": "^6.0.0",
     "run-sequence": "2.2.1",
     "stylelint-config-htmlacademy": "0.1.x",
-    "stylelint": "^9.5.0"
+    "stylelint": "^9.5.0",
+    "eslint": "4.19.1",
+    "eslint-config-htmlacademy": "0.5.x"
   },
   "author": "nikkypizza",
   "license": "ISC"

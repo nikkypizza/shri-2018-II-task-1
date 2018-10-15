@@ -143,8 +143,8 @@ dfn {
  * Add the correct background and color in IE 9-.
  */
 mark {
-  background-color: #ff0;
-  color: #000; }
+  background-color: #ffff00;
+  color: #000000; }
 
 /**
  * Add the correct font size in all browsers.
@@ -439,7 +439,7 @@ button {
 
 .page-header__logo {
   margin: 12px 19px 0 19px;
-  transition: .3s linear; }
+  transition: 0.3s linear; }
 
 .page-header__menu-toggler {
   align-self: center;
@@ -460,7 +460,7 @@ button {
     font-size: 16px;
     font-weight: bold;
     line-height: 20px;
-    opacity: .6;
+    opacity: 0.6;
     color: #333333; }
   .page-header__nav-list-item--active a {
     pointer-events: none;
@@ -478,7 +478,7 @@ button {
     width: auto; }
   .page-header__logo {
     margin: 26px 18px 15px 40px;
-    transition: .3s linear; }
+    transition: 0.3s linear; }
   .page-header__nav-list-item {
     margin: 22px 28px 26px 0;
     padding: 0;
@@ -506,7 +506,7 @@ button {
   min-height: 61px;
   margin: 0 0 12px 0;
   padding-top: 20px;
-  transition: .1s linear;
+  transition: 0.1s linear;
   border-radius: 20px;
   background-color: #f3f3f3; }
   .events__card:hover {
@@ -542,7 +542,7 @@ button {
 
 .events__card-content {
   padding: 9px 5% 20px 5%;
-  transition: .1s linear;
+  transition: 0.1s linear;
   color: #333333;
   border-radius: 15px;
   background-color: #f3f3f3;
@@ -602,15 +602,15 @@ button {
   .events__header {
     font-size: 3.13vw;
     margin: 2vw 0;
-    transition: .1s linear; }
+    transition: 0.1s linear; }
   .events__card-subheader {
-    font-size: 1.50vw; }
+    font-size: 1.5vw; }
   .events__card-title {
     font-size: 1.82vw;
     line-height: 2vw; }
   .events__card-description {
-    font-size: 2.20vw;
-    line-height: 2.50vw; } }
+    font-size: 2.2vw;
+    line-height: 2.5vw; } }
 
 @media (min-width: 1000px) {
   .events {
@@ -644,7 +644,7 @@ button {
     font-size: 36px;
     line-height: 42px;
     margin: 35px 0;
-    transition: .2s linear; }
+    transition: 0.2s linear; }
   .events__card-subheader {
     font-size: 18px;
     line-height: 21px; }
@@ -954,7 +954,7 @@ button {
   .cameras__header {
     font-size: 3.13vw;
     margin: 2vw 0;
-    transition: .1s linear; }
+    transition: 0.1s linear; }
   .cameras__list {
     grid-template-columns: repeat(2, 1fr); } }
 
@@ -968,7 +968,7 @@ button {
     font-size: 36px;
     line-height: 42px;
     margin: 35px 0;
-    transition: .2s linear; } }
+    transition: 0.2s linear; } }
 
 .video-controls {
   display: flex;
