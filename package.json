@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "stylelint": "stylelint 'sass/**/*.scss' --syntax scss --fix",
-    "eslint": "eslint \"./js/*.js\" --fix"
+    "eslint": "eslint \"./js/*.js\" \"./js/modules/**/*.js\" --fix"
   },
   "dependencies": {},
   "devDependencies": {
