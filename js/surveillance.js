@@ -2,7 +2,6 @@ import initStreams from "./modules/surveillance/init-streams.js";
 import initCanvasVolumeGraph from "./modules/surveillance/init-canvas-volume-graph.js";
 import {keyCodes, initialFilterValues} from "./modules/surveillance/constants.js";
 
-const canvasNodes = document.querySelectorAll(`.video-controls__sound-level`);
 const videoNodes = document.querySelectorAll(`.cameras__list-item-video`);
 const camerasListItemNodes = document.querySelectorAll(`.cameras__list-item`);
 const camerasHeaderNode = document.querySelector(`.cameras__header`);
@@ -61,11 +60,6 @@ for (let el of videoNodes) {
       });
     });
 
-    // https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio
-    // audioContext.resume().then(() => {
-    //   console.log(`Playback resumed successfully`);
-    // });
-
     const onModalClose = () => {
       cameraListItem.style = ``;
       videoControlsNode.style = ``;
@@ -105,13 +99,14 @@ for (let el of videoNodes) {
 
   el.addEventListener(`keyup`, (evt) => {
     if (evt.keyCode === keyCodes.ENTER) {
-      console.log(`Развернуть модельное окно по нажатию на ENTER`);
+      // Развернуть модельное окно по нажатию на ENTER;
     }
   });
 }
 
 // -- //
 initStreams(videoNodes);
-videoNodes.forEach((el, index) => {
-  initCanvasVolumeGraph(el, canvasNodes[index]);
-});
+for (let videoEl of videoNodes) {
+  const currentElCanvas = videoEl.parentNode.querySelector(`canvas`);
+  initCanvasVolumeGraph(videoEl, currentElCanvas);
+}
