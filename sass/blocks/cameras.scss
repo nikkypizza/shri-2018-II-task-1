@@ -6,40 +6,12 @@
 .cameras__list {
   display: grid;
   grid-gap: 10px;
+  align-items: center;
 }
 
 .cameras__list-item {
-  left: 2%;
-  width: 100%;
-  animation-duration: 1s;
-  animation-play-state: paused;
-  animation-timing-function: ease-in;
-  animation-iteration-count: 1;
-
-  animation-fill-mode: forwards;
-}
-
-@keyframes videoItemOpenAnim {
-  from {
-    width: 35vw;
-  }
-
-  to {
-    position: absolute;
-    width: 95vw;
-  }
-}
-
-@keyframes videoItemCloseAnim {
-  from {
-    position: absolute;
-    width: 95vw;
-  }
-
-  to {
-    position: static;
-    width: 100%;
-  }
+  justify-self: center;
+  transition: all 1s linear;
 }
 
 .cameras__list-item-video {
@@ -63,6 +35,10 @@
     transition: 0.1s linear;
   }
 
+  .cameras__list-item {
+    width: 330px;
+  }
+
   .cameras__list {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -71,6 +47,10 @@
 @media ($tablet-l-width) {
   .cameras {
     margin: 0 12.5%;
+  }
+
+  .cameras__list-item {
+    width: 240px;
   }
 
   .cameras__list {

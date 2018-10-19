@@ -32,18 +32,19 @@ for (let el of videoNodes) {
     cameraListItem.classList.add(`cameras__list-item--active`);
     for (let elem of camerasListItemNodes) {
       if (!elem.classList.contains(`cameras__list-item--active`)) {
-        elem.classList.add(`visually-hidden`);
+        elem.style.display = `none`;
       }
     }
 
     // Добавляем контролы <video>, показываем меню
-    cameraListItem.style.webkitAnimationName = `videoItemOpenAnim`;
-    cameraListItem.style.animationPlayState = `running`;
+    cameraListItem.style.position = `absolute`;
+    cameraListItem.style.left = `10vw`;
+    cameraListItem.style.width = `80vw`;
     videoNode.setAttribute(`controls`, ``);
     videoNode.muted = false;
 
-    videoControlsNode.classList.remove(`visually-hidden`);
-    videoControlsNode.style.animationPlayState = `running`;
+    videoControlsNode.style.display = `flex`;
+    videoControlsNode.style.opacity = 1;
 
     // CSS фильтры
     videoInputNodes.forEach((element) => {
@@ -68,19 +69,13 @@ for (let el of videoNodes) {
       contrastValue = initialFilterValues.CONTRAST;
       camerasHeaderNode.textContent = CAMERAS_HEADER_NODE_TITLE;
 
-      // Убираем контролы <video>, прячем меню
-      cameraListItem.style.webkitAnimationName = `videoItemCloseAnim`;
-      cameraListItem.style.animationPlayState = `running`;
       videoNode.removeAttribute(`controls`);
       videoNode.muted = true;
-
-      videoControlsNode.style.webkitAnimationName = `videoControlsCloseAnim`;
-      videoControlsNode.classList.add(`visually-hidden`);
 
       // Показываем неактивные видео списка
       for (let elem of camerasListItemNodes) {
         if (!elem.classList.contains(`cameras__list-item--active`)) {
-          elem.classList.remove(`visually-hidden`);
+          elem.style.display = ``;
         }
       }
       cameraListItem.classList.remove(`cameras__list-item--active`);
@@ -96,17 +91,10 @@ for (let el of videoNodes) {
       }
     });
   });
-
-  el.addEventListener(`keyup`, (evt) => {
-    if (evt.keyCode === keyCodes.ENTER) {
-      // Развернуть модельное окно по нажатию на ENTER;
-    }
-  });
 }
 
-// -- //
 initStreams(videoNodes);
 for (let videoEl of videoNodes) {
-  const currentElCanvas = videoEl.parentNode.querySelector(`canvas`);
+  const currentElCanvas = videoEl.parentNode.querySelector(`.video-controls__sound-level`);
   initCanvasVolumeGraph(videoEl, currentElCanvas);
 }

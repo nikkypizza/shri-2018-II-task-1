@@ -411,19 +411,6 @@ button {
   border: none;
   background-color: transparent; }
 
-.display-none {
-  display: none; }
-
-.visually-hidden {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0; }
-
 .page-header {
   position: -webkit-sticky;
   position: sticky;
@@ -894,51 +881,12 @@ button {
 
 .cameras__list {
   display: grid;
-  grid-gap: 10px; }
+  grid-gap: 10px;
+  align-items: center; }
 
 .cameras__list-item {
-  left: 2%;
-  width: 100%;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-  -webkit-animation-timing-function: ease-in;
-          animation-timing-function: ease-in;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards; }
-
-@-webkit-keyframes videoItemOpenAnim {
-  from {
-    width: 35vw; }
-  to {
-    position: absolute;
-    width: 95vw; } }
-
-@keyframes videoItemOpenAnim {
-  from {
-    width: 35vw; }
-  to {
-    position: absolute;
-    width: 95vw; } }
-
-@-webkit-keyframes videoItemCloseAnim {
-  from {
-    position: absolute;
-    width: 95vw; }
-  to {
-    position: static;
-    width: 100%; } }
-
-@keyframes videoItemCloseAnim {
-  from {
-    position: absolute;
-    width: 95vw; }
-  to {
-    position: static;
-    width: 100%; } }
+  justify-self: center;
+  transition: all 1s linear; }
 
 .cameras__list-item-video {
   width: 100%; }
@@ -955,12 +903,16 @@ button {
     font-size: 3.13vw;
     margin: 2vw 0;
     transition: 0.1s linear; }
+  .cameras__list-item {
+    width: 330px; }
   .cameras__list {
     grid-template-columns: repeat(2, 1fr); } }
 
 @media (min-width: 1000px) {
   .cameras {
     margin: 0 12.5%; }
+  .cameras__list-item {
+    width: 240px; }
   .cameras__list {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px; }
@@ -971,42 +923,14 @@ button {
     transition: 0.2s linear; } }
 
 .video-controls {
-  display: flex;
+  display: none;
   margin-top: -7px;
-  -webkit-animation-name: videoControlsOpenAnim;
-          animation-name: videoControlsOpenAnim;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-  -webkit-animation-timing-function: ease-in;
-          animation-timing-function: ease-in;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
   opacity: 0;
   border: 2px solid #ffd93e;
   border-radius: 0 0 15px 15px;
   background-color: #f3f3f3;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards; }
-
-@-webkit-keyframes videoControlsOpenAnim {
-  to {
-    opacity: 1; } }
-
-@keyframes videoControlsOpenAnim {
-  to {
-    opacity: 1; } }
-
-@-webkit-keyframes videoControlsCloseAnim {
-  to {
-    opacity: 0; } }
-
-@keyframes videoControlsCloseAnim {
-  to {
-    opacity: 0; } }
+  transition: all 1s linear;
+  transition-delay: 1s; }
 
 .video-controls__return-btn {
   padding: 5px 10px;

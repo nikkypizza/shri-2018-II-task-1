@@ -1,7 +1,6 @@
 export default function initCanvasVolumeGraph(element, elementCanvas) {
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
   const audioContext = new AudioCtx();
-  const currentVideoElement = element;
   const canvas = elementCanvas;
   const canvasCtx = canvas.getContext(`2d`);
 
@@ -10,8 +9,7 @@ export default function initCanvasVolumeGraph(element, elementCanvas) {
   let bufferLength = null;
 
   const buildAudioGraph = () => {
-    let mediaElement = currentVideoElement;
-    let sourceNode = audioContext.createMediaElementSource(mediaElement);
+    let sourceNode = audioContext.createMediaElementSource(element);
 
     analyser = audioContext.createAnalyser();
     analyser.fftSize = 512;
@@ -39,6 +37,6 @@ export default function initCanvasVolumeGraph(element, elementCanvas) {
     }
   };
 
-  buildAudioGraph(currentVideoElement);
+  buildAudioGraph(element);
   requestAnimationFrame(visualizeVolumeLevel);
 }
