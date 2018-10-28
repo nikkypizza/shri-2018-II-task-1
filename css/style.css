@@ -143,8 +143,8 @@ dfn {
  * Add the correct background and color in IE 9-.
  */
 mark {
-  background-color: #ff0;
-  color: #000; }
+  background-color: #ffff00;
+  color: #000000; }
 
 /**
  * Add the correct font size in all browsers.
@@ -411,9 +411,6 @@ button {
   border: none;
   background-color: transparent; }
 
-.display-none {
-  display: none; }
-
 .page-header {
   position: -webkit-sticky;
   position: sticky;
@@ -429,7 +426,7 @@ button {
 
 .page-header__logo {
   margin: 12px 19px 0 19px;
-  transition: .3s linear; }
+  transition: 0.3s linear; }
 
 .page-header__menu-toggler {
   align-self: center;
@@ -450,7 +447,7 @@ button {
     font-size: 16px;
     font-weight: bold;
     line-height: 20px;
-    opacity: .6;
+    opacity: 0.6;
     color: #333333; }
   .page-header__nav-list-item--active a {
     pointer-events: none;
@@ -468,7 +465,7 @@ button {
     width: auto; }
   .page-header__logo {
     margin: 26px 18px 15px 40px;
-    transition: .3s linear; }
+    transition: 0.3s linear; }
   .page-header__nav-list-item {
     margin: 22px 28px 26px 0;
     padding: 0;
@@ -496,7 +493,7 @@ button {
   min-height: 61px;
   margin: 0 0 12px 0;
   padding-top: 20px;
-  transition: .1s linear;
+  transition: 0.1s linear;
   border-radius: 20px;
   background-color: #f3f3f3; }
   .events__card:hover {
@@ -532,7 +529,7 @@ button {
 
 .events__card-content {
   padding: 9px 5% 20px 5%;
-  transition: .1s linear;
+  transition: 0.1s linear;
   color: #333333;
   border-radius: 15px;
   background-color: #f3f3f3;
@@ -576,15 +573,15 @@ button {
     grid-template-columns: repeat(2, 1fr); }
   .events__card {
     margin: 0; }
-  .events__card--s {
-    grid-column: span 1;
-    grid-row: span 1; }
-  .events__card--l {
-    grid-column: span 2;
-    grid-row: span 3; }
-  .events__card--m {
-    grid-column: span 1;
-    grid-row: span 1; } }
+    .events__card--s {
+      grid-column: span 1;
+      grid-row: span 1; }
+    .events__card--l {
+      grid-column: span 2;
+      grid-row: span 3; }
+    .events__card--m {
+      grid-column: span 1;
+      grid-row: span 1; } }
 
 @media (min-width: 768px) {
   .events__card:hover .events__card-btn {
@@ -592,15 +589,15 @@ button {
   .events__header {
     font-size: 3.13vw;
     margin: 2vw 0;
-    transition: .1s linear; }
+    transition: 0.1s linear; }
   .events__card-subheader {
-    font-size: 1.50vw; }
+    font-size: 1.5vw; }
   .events__card-title {
     font-size: 1.82vw;
     line-height: 2vw; }
   .events__card-description {
-    font-size: 2.20vw;
-    line-height: 2.50vw; } }
+    font-size: 2.2vw;
+    line-height: 2.5vw; } }
 
 @media (min-width: 1000px) {
   .events {
@@ -634,7 +631,7 @@ button {
     font-size: 36px;
     line-height: 42px;
     margin: 35px 0;
-    transition: .2s linear; }
+    transition: 0.2s linear; }
   .events__card-subheader {
     font-size: 18px;
     line-height: 21px; }
@@ -826,11 +823,9 @@ button {
   border-radius: 8px;
   background-color: #e5e5e5; }
   .widget-fridge__btn:hover {
-    background-color: #eaeaea;
-    box-shadow: 0 2px 6px 0 rgba(197, 186, 186, 0.5); }
+    background-color: #eaeaea; }
   .widget-fridge__btn:active {
-    background-color: #d8d8d8;
-    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5); }
+    background-color: #d8d8d8; }
   .widget-fridge__btn--confirm {
     background-color: #ffd93e; }
     .widget-fridge__btn--confirm:hover {
@@ -884,6 +879,20 @@ button {
   margin: 0 6%;
   color: #333333; }
 
+.cameras__list {
+  display: grid;
+  grid-gap: 10px;
+  align-items: center; }
+
+.cameras__list-item {
+  justify-self: center;
+  transition: all 1s linear; }
+
+.cameras__list-item-video {
+  width: 100%; }
+  .cameras__list-item-video:hover .video-controls {
+    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5); }
+
 .cameras__header {
   font-size: 24px;
   line-height: 28px;
@@ -893,16 +902,105 @@ button {
   .cameras__header {
     font-size: 3.13vw;
     margin: 2vw 0;
-    transition: .1s linear; } }
+    transition: 0.1s linear; }
+  .cameras__list-item {
+    width: 330px; }
+  .cameras__list {
+    grid-template-columns: repeat(2, 1fr); } }
 
 @media (min-width: 1000px) {
   .cameras {
     margin: 0 12.5%; }
+  .cameras__list-item {
+    width: 240px; }
+  .cameras__list {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px; }
   .cameras__header {
     font-size: 36px;
     line-height: 42px;
     margin: 35px 0;
-    transition: .2s linear; } }
+    transition: 0.2s linear; } }
+
+.video-controls {
+  display: none;
+  margin-top: -7px;
+  opacity: 0;
+  border: 2px solid #ffd93e;
+  border-radius: 0 0 15px 15px;
+  background-color: #f3f3f3;
+  transition: all 1s linear;
+  transition-delay: 1s; }
+
+.video-controls__return-btn {
+  padding: 5px 10px;
+  border: 2px solid;
+  border-top: 0;
+  border-radius: 0 0 15px 15px; }
+  .video-controls__return-btn:hover {
+    background-color: #eaeaea;
+    box-shadow: 0 2px 6px 0 rgba(197, 186, 186, 0.5); }
+  .video-controls__return-btn:active {
+    background-color: #d8d8d8;
+    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5); }
+
+.video-controls__form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding-right: 10px; }
+
+.video-controls__title {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 7px 0;
+  color: #333333; }
+
+.video-controls__sound-level {
+  outline: 2px dashed #ffd93e;
+  width: 80%; }
+
+.video-controls__input {
+  width: 100%;
+  padding-bottom: 7px;
+  background-color: transparent;
+  -webkit-appearance: none; }
+  .video-controls__input:focus {
+    outline: none; }
+  .video-controls__input::-webkit-slider-runnable-track {
+    height: 3px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d8d8d8; }
+  .video-controls__input::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    border: none;
+    border-radius: 50%;
+    background-color: #605757;
+    -webkit-appearance: none; }
+  .video-controls__input::-moz-range-track {
+    height: 3px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d8d8d8; }
+  .video-controls__input::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border: none;
+    border-radius: 50%;
+    background-color: #605757; }
+
+.video-controls__output {
+  font-size: 14px;
+  color: #a1a1a1; }
+
+@media (min-width: 1000px) {
+  .video-controls__title {
+    font-size: 18px;
+    line-height: 21px; } }
 
 .page-footer {
   display: flex;

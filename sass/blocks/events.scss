@@ -17,12 +17,12 @@
   min-height: 61px;
   margin: 0 0 12px 0;
   padding-top: 20px;
-  transition: .1s linear;
+  transition: 0.1s linear;
   border-radius: 20px;
   background-color: $background-primary-color;
 
   &:hover {
-    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, .5);
+    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5);
   }
 }
 
@@ -62,7 +62,7 @@
 
 .events__card-content {
   padding: 9px 5% 20px 5%;
-  transition: .1s linear;
+  transition: 0.1s linear;
   color: #333333;
   border-radius: 15px;
   background-color: $background-primary-color;
@@ -119,9 +119,7 @@
 
   .events__card {
     margin: 0;
-  }
 
-  .events__card {
     &--s {
       grid-column: span 1;
       grid-row: span 1;
@@ -147,11 +145,11 @@
   .events__header {
     font-size: 3.13vw;
     margin: 2vw 0;
-    transition: .1s linear;
+    transition: 0.1s linear;
   }
 
   .events__card-subheader {
-    font-size: 1.50vw;
+    font-size: 1.5vw;
   }
 
   .events__card-title {
@@ -160,8 +158,8 @@
   }
 
   .events__card-description {
-    font-size: 2.20vw;
-    line-height: 2.50vw;
+    font-size: 2.2vw;
+    line-height: 2.5vw;
   }
 }
 
@@ -222,7 +220,7 @@
     font-size: 36px;
     line-height: 42px;
     margin: 35px 0;
-    transition: .2s linear;
+    transition: 0.2s linear;
   }
 
   .events__card-subheader {

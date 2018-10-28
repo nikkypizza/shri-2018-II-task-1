@@ -3,6 +3,25 @@
   color: $font-color-primary;
 }
 
+.cameras__list {
+  display: grid;
+  grid-gap: 10px;
+  align-items: center;
+}
+
+.cameras__list-item {
+  justify-self: center;
+  transition: all 1s linear;
+}
+
+.cameras__list-item-video {
+  width: 100%;
+
+  &:hover .video-controls {
+    box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5);
+  }
+}
+
 .cameras__header {
   font-size: 24px;
   line-height: 28px;
@@ -13,7 +32,15 @@
   .cameras__header {
     font-size: 3.13vw;
     margin: 2vw 0;
-    transition: .1s linear;
+    transition: 0.1s linear;
+  }
+
+  .cameras__list-item {
+    width: 330px;
+  }
+
+  .cameras__list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -22,10 +49,19 @@
     margin: 0 12.5%;
   }
 
+  .cameras__list-item {
+    width: 240px;
+  }
+
+  .cameras__list {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+
   .cameras__header {
     font-size: 36px;
     line-height: 42px;
     margin: 35px 0;
-    transition: .2s linear;
+    transition: 0.2s linear;
   }
 }
