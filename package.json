@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "stylelint": "stylelint 'sass/**/*.scss' --syntax scss --fix",
-    "eslint": "eslint \"./js/*.js\" \"./js/modules/**/*.js\" --fix"
+    "eslint": "eslint \"./js/*.js\" \"./js/modules/**/*.js\" --fix",
+    "node-start": "nodemon node-hw/index.js"
   },
   "dependencies": {},
   "devDependencies": {
@@ -29,7 +30,11 @@
     "stylelint-config-htmlacademy": "0.1.x",
     "stylelint": "^9.5.0",
     "eslint": "4.19.1",
-    "eslint-config-htmlacademy": "0.5.x"
+    "eslint-config-htmlacademy": "0.5.x",
+    "express": "^4.16.4",
+    "moment": "^2.22.2",
+    "npm": "^6.4.1",
+    "nodemon": "^1.18.4"
   },
   "author": "nikkypizza",
   "license": "ISC"

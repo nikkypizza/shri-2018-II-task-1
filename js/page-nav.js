@@ -1,4 +1,4 @@
-(function() {
+(function () {
   const menuButton = document.querySelector(`.page-header__menu-toggler`);
   const navList = document.querySelector(`.page-header__nav-list`);
 
