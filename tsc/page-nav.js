@@ -1,3 +1,4 @@
+"use strict";
 (function () {
     var menuButton = document.querySelector(".page-header__menu-toggler");
     var navList = document.querySelector(".page-header__nav-list");

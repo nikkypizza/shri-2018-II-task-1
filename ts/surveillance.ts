@@ -1,6 +1,6 @@
 import initStreams from "./modules/surveillance/init-streams.js";
 import initCanvasVolumeGraph from "./modules/surveillance/init-canvas-volume-graph.js";
-import {keyCodes, initialFilterValues} from "./modules/surveillance/constants.js";
+import { keyCodes, initialFilterValues } from "./modules/surveillance/constants.js";
 
 const videoNodes = document.querySelectorAll(`.cameras__list-item-video`);
 const camerasListItemNodes = document.querySelectorAll(`.cameras__list-item`);
