@@ -159,37 +159,53 @@ const INPUT_JSON = {
 
 const INPUT_DATA = JSON.parse(JSON.stringify(INPUT_JSON));
 
-const renderCards = (input: object) => {
-  const criticalColors = {
+const renderCards = (input: Array<object>) => {
+  interface critColors {
+    readonly TEXT: string
+    readonly BACKGROUND: string
+  }
+  const criticalColors: critColors = {
     TEXT: `#ffffff`,
     BACKGROUND: `#db5341`
   };
-  const eventsListNode = document.querySelector(`.events__list`);
-  const cardTemplateNode = <HTMLTemplateElement>document.querySelector(`.card-template`);
-  const cardNode = cardTemplateNode.content.querySelector(`.events__card`);
 
-  const widgetsTemplateNode: HTMLTemplateElement = document.querySelector(`.widgets-template`);
-  const camWidgetNode = widgetsTemplateNode.content.querySelector(`.widget-cam`);
-  const fridgeWidgetNode = widgetsTemplateNode.content.querySelector(`.widget-fridge`);
-  const tempWidgetNode = widgetsTemplateNode.content.querySelector(`.widget-temperature`);
-  const musicWidgetNode = widgetsTemplateNode.content.querySelector(`.widget-music`);
-  const statsImgNode = widgetsTemplateNode.content.querySelector(`.events__card-image`);
+  const eventsListNode = <HTMLUListElement>document.querySelector(`.events__list`);
+  const cardTemplateNode = <HTMLTemplateElement>document.querySelector(`.card-template`);
+  const cardNode = <HTMLLIElement>cardTemplateNode.content.querySelector(`.events__card`);
+
+  const widgetsTemplateNode = <HTMLTemplateElement>document.querySelector(`.widgets-template`);
+  const camWidgetNode = <HTMLDivElement>widgetsTemplateNode.content.querySelector(`.widget-cam`);
+  const fridgeWidgetNode = <HTMLFormElement>widgetsTemplateNode.content.querySelector(`.widget-fridge`);
+  const tempWidgetNode = <HTMLUListElement>widgetsTemplateNode.content.querySelector(`.widget-temperature`);
+  const musicWidgetNode = <HTMLDivElement>widgetsTemplateNode.content.querySelector(`.widget-music`);
+  const statsImgNode = <HTMLImageElement>widgetsTemplateNode.content.querySelector(`.events__card-image`);
 
   const fragment = document.createDocumentFragment();
 
+  interface dataElement {
+    readonly type: string
+    readonly title: string
+    readonly source: string
+    readonly time: string
+    readonly description: string
+    readonly icon: string
+    readonly data?: any
+    readonly size: string
+  };
+
   for (let el of input) {
-    const currentElement = cardNode.cloneNode(true);
+    const element = <dataElement>el;
+    const currentElement = <HTMLLIElement>cardNode.cloneNode(true);
 
-    currentElement.classList.add(`events__card--${el.size}`);
-    currentElement.querySelector(`.events__card-title`).textContent = el.title;
-    currentElement.querySelector(`.events__card-source`).textContent = el.source;
-    currentElement.querySelector(`.events__card-time`).textContent = el.time;
-
+    currentElement.classList.add(`events__card--${element.size}`);
+    (currentElement.querySelector(`.events__card-title`) as HTMLHeadingElement).textContent = element.title;
+    (currentElement.querySelector(`.events__card-source`) as HTMLSpanElement).textContent = element.source;
+    (currentElement.querySelector(`.events__card-time`) as HTMLSpanElement).textContent = element.time;
     // Добавление виджетов
-    if (el.data) {
-      const cardContentNode = currentElement.querySelector(`.events__card-content`);
+    if (element.data) {
+      const cardContentNode = <HTMLDivElement>currentElement.querySelector(`.events__card-content`);
 
-      switch (el.icon) {
+      switch (element.icon) {
         case `cam`:
           cardContentNode.appendChild(camWidgetNode.cloneNode(true));
           break;
@@ -201,45 +217,45 @@ const renderCards = (input: object) => {
           break;
         case `thermal`:
           cardContentNode.appendChild(tempWidgetNode.cloneNode(true));
-          currentElement.querySelector(`.widget-temperature-value--temp`).textContent = `${el.data.temperature} C`;
-          currentElement.querySelector(`.widget-temperature-value--humidity`).textContent = `${el.data.humidity} %`;
+          (currentElement.querySelector(`.widget-temperature-value--temp`) as HTMLSpanElement).textContent = `${element.data.temperature} C`;
+          (currentElement.querySelector(`.widget-temperature-value--humidity`) as HTMLSpanElement).textContent = `${element.data.humidity} %`;
           break;
         case `music`:
           cardContentNode.appendChild(musicWidgetNode.cloneNode(true));
-          currentElement.querySelector(`.widget-music__album-cover`).src = el.data.albumcover;
-          currentElement.querySelector(`.widget-music__artist-name`).textContent = `${el.data.artist} - ${el.data.track.name}`;
-          currentElement.querySelector(`.widget-music__song-length`).textContent = el.data.track.length;
-          currentElement.querySelector(`.widget-music__volume-input`).value = el.data.volume;
-          currentElement.querySelector(`.widget-music__volume-output`).textContent = `${el.data.volume}%`;
+          (currentElement.querySelector(`.widget-music__album-cover`) as HTMLImageElement).src = element.data.albumcover;
+          (currentElement.querySelector(`.widget-music__artist-name`) as HTMLSpanElement).textContent = `${element.data.artist} - ${element.data.track.name}`;
+          (currentElement.querySelector(`.widget-music__song-length`) as HTMLSpanElement).textContent = element.data.track.length;
+          (currentElement.querySelector(`.widget-music__volume-input`) as HTMLInputElement).value = element.data.volume;
+          (currentElement.querySelector(`.widget-music__volume-output`) as HTMLOutputElement).textContent = `${element.data.volume}%`;
           break;
       }
     }
 
-    if (!el.description) {
-      currentElement.querySelector(`.events__card-content`).classList.add(`display-none`);
+    if (!element.description) {
+      (currentElement.querySelector(`.events__card-content`) as HTMLDivElement).classList.add(`display-none`);
     } else {
-      currentElement.querySelector(`.events__card-description`).textContent = el.description;
-      currentElement.style.paddingBottom = 0;
+      (currentElement.querySelector(`.events__card-description`) as HTMLParagraphElement).textContent = element.description;
+      currentElement.style.paddingBottom = `0`;
     }
 
     // Добавление критического состояния
-    switch (el.type) {
+    switch (element.type) {
       case `critical`:
         currentElement.style.backgroundColor = criticalColors.BACKGROUND;
         currentElement.style.color = criticalColors.TEXT;
-        currentElement.querySelector(`.events__card-icon`).src = `img/svg/icon-${el.icon}-critical.svg`;
-        currentElement.querySelector(`.events__card-subheader`).style.marginBottom = `16px`;
-        currentElement.querySelector(`.events__card-content`).style.padding = `18px 5% 1px 5%`;
-        currentElement.querySelector(`.events__card-title`).classList.add(`events__card-title--critical`);
-        currentElement.querySelector(`.events__card-btn--close`).style.backgroundImage = `url('img/svg/icon-cross-critical.svg')`;
+        (currentElement.querySelector(`.events__card-icon`) as HTMLImageElement).src = `img/svg/icon-${element.icon}-critical.svg`;
+        (currentElement.querySelector(`.events__card-subheader`) as HTMLDivElement).style.marginBottom = `16px`;
+        (currentElement.querySelector(`.events__card-content`) as HTMLDivElement).style.padding = `18px 5% 1px 5%`;
+        (currentElement.querySelector(`.events__card-title`) as HTMLHeadingElement).classList.add(`events__card-title--critical`);
+        (currentElement.querySelector(`.events__card-btn--close`) as HTMLButtonElement).style.backgroundImage = `url('img/svg/icon-cross-critical.svg')`;
         break;
       default:
-        currentElement.querySelector(`.events__card-icon`).src = `img/svg/icon-${el.icon}.svg`;
+        (currentElement.querySelector(`.events__card-icon`) as HTMLImageElement).src = `img/svg/icon-${element.icon}.svg`;
         break;
     }
 
     fragment.appendChild(currentElement);
-  }
+  };
   eventsListNode.appendChild(fragment);
 };
 

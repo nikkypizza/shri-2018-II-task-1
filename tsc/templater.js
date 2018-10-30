@@ -173,17 +173,19 @@ var renderCards = function (input) {
     var musicWidgetNode = widgetsTemplateNode.content.querySelector(".widget-music");
     var statsImgNode = widgetsTemplateNode.content.querySelector(".events__card-image");
     var fragment = document.createDocumentFragment();
+    ;
     for (var _i = 0, input_1 = input; _i < input_1.length; _i++) {
         var el = input_1[_i];
+        var element = el;
         var currentElement = cardNode.cloneNode(true);
-        currentElement.classList.add("events__card--" + el.size);
-        currentElement.querySelector(".events__card-title").textContent = el.title;
-        currentElement.querySelector(".events__card-source").textContent = el.source;
-        currentElement.querySelector(".events__card-time").textContent = el.time;
+        currentElement.classList.add("events__card--" + element.size);
+        currentElement.querySelector(".events__card-title").textContent = element.title;
+        currentElement.querySelector(".events__card-source").textContent = element.source;
+        currentElement.querySelector(".events__card-time").textContent = element.time;
         // Добавление виджетов
-        if (el.data) {
+        if (element.data) {
             var cardContentNode = currentElement.querySelector(".events__card-content");
-            switch (el.icon) {
+            switch (element.icon) {
                 case "cam":
                     cardContentNode.appendChild(camWidgetNode.cloneNode(true));
                     break;
@@ -195,43 +197,44 @@ var renderCards = function (input) {
                     break;
                 case "thermal":
                     cardContentNode.appendChild(tempWidgetNode.cloneNode(true));
-                    currentElement.querySelector(".widget-temperature-value--temp").textContent = el.data.temperature + " C";
-                    currentElement.querySelector(".widget-temperature-value--humidity").textContent = el.data.humidity + " %";
+                    currentElement.querySelector(".widget-temperature-value--temp").textContent = element.data.temperature + " C";
+                    currentElement.querySelector(".widget-temperature-value--humidity").textContent = element.data.humidity + " %";
                     break;
                 case "music":
                     cardContentNode.appendChild(musicWidgetNode.cloneNode(true));
-                    currentElement.querySelector(".widget-music__album-cover").src = el.data.albumcover;
-                    currentElement.querySelector(".widget-music__artist-name").textContent = el.data.artist + " - " + el.data.track.name;
-                    currentElement.querySelector(".widget-music__song-length").textContent = el.data.track.length;
-                    currentElement.querySelector(".widget-music__volume-input").value = el.data.volume;
-                    currentElement.querySelector(".widget-music__volume-output").textContent = el.data.volume + "%";
+                    currentElement.querySelector(".widget-music__album-cover").src = element.data.albumcover;
+                    currentElement.querySelector(".widget-music__artist-name").textContent = element.data.artist + " - " + element.data.track.name;
+                    currentElement.querySelector(".widget-music__song-length").textContent = element.data.track.length;
+                    currentElement.querySelector(".widget-music__volume-input").value = element.data.volume;
+                    currentElement.querySelector(".widget-music__volume-output").textContent = element.data.volume + "%";
                     break;
             }
         }
-        if (!el.description) {
+        if (!element.description) {
             currentElement.querySelector(".events__card-content").classList.add("display-none");
         }
         else {
-            currentElement.querySelector(".events__card-description").textContent = el.description;
-            currentElement.style.paddingBottom = 0;
+            currentElement.querySelector(".events__card-description").textContent = element.description;
+            currentElement.style.paddingBottom = "0";
         }
         // Добавление критического состояния
-        switch (el.type) {
+        switch (element.type) {
             case "critical":
                 currentElement.style.backgroundColor = criticalColors.BACKGROUND;
                 currentElement.style.color = criticalColors.TEXT;
-                currentElement.querySelector(".events__card-icon").src = "img/svg/icon-" + el.icon + "-critical.svg";
+                currentElement.querySelector(".events__card-icon").src = "img/svg/icon-" + element.icon + "-critical.svg";
                 currentElement.querySelector(".events__card-subheader").style.marginBottom = "16px";
                 currentElement.querySelector(".events__card-content").style.padding = "18px 5% 1px 5%";
                 currentElement.querySelector(".events__card-title").classList.add("events__card-title--critical");
                 currentElement.querySelector(".events__card-btn--close").style.backgroundImage = "url('img/svg/icon-cross-critical.svg')";
                 break;
             default:
-                currentElement.querySelector(".events__card-icon").src = "img/svg/icon-" + el.icon + ".svg";
+                currentElement.querySelector(".events__card-icon").src = "img/svg/icon-" + element.icon + ".svg";
                 break;
         }
         fragment.appendChild(currentElement);
     }
+    ;
     eventsListNode.appendChild(fragment);
 };
 renderCards(INPUT_DATA.events);
