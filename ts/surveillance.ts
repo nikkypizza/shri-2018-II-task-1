@@ -2,10 +2,10 @@ import initStreams from "./modules/surveillance/init-streams.js";
 import initCanvasVolumeGraph from "./modules/surveillance/init-canvas-volume-graph.js";
 import { keyCodes, initialFilterValues } from "./modules/surveillance/constants.js";
 
-const videoNodes = document.querySelectorAll(`.cameras__list-item-video`);
-const camerasListItemNodes = document.querySelectorAll(`.cameras__list-item`);
-const camerasHeaderNode = document.querySelector(`.cameras__header`);
-const CAMERAS_HEADER_NODE_TITLE = camerasHeaderNode.innerHTML;
+const videoNodes = (document.querySelectorAll(`.cameras__list-item-video`) as unknown as Array<HTMLVideoElement>); //?
+const camerasListItemNodes = (document.querySelectorAll(`.cameras__list-item`) as unknown as Array<HTMLLinkElement>); //?
+const camerasHeaderNode = <HTMLHeadingElement>document.querySelector(`.cameras__header`);
+const CAMERAS_HEADER_NODE_TITLE: string = camerasHeaderNode.innerHTML;
 
 let brightnessValue = initialFilterValues.BRIGHTNESS;
 let contrastValue = initialFilterValues.CONTRAST;
@@ -19,13 +19,13 @@ for (let el of videoNodes) {
       return;
     }
 
-    const videoNode = evt.target;
-    const cameraListItem = videoNode.parentNode;
-    const videoControlsNode = cameraListItem.querySelector(`.video-controls`);
-    const showAllBtn = cameraListItem.querySelector(`.video-controls__return-btn`);
-    const videoInputNodes = cameraListItem.querySelectorAll(`.video-controls__input`);
+    const videoNode = <HTMLVideoElement>evt.target;
+    const cameraListItem = <HTMLLinkElement>videoNode.parentNode;
+    const videoControlsNode = <HTMLDivElement>cameraListItem.querySelector(`.video-controls`);
+    const showAllBtn = <HTMLButtonElement>cameraListItem.querySelector(`.video-controls__return-btn`);
+    const videoInputNodes = (cameraListItem.querySelectorAll(`.video-controls__input`) as unknown as Array<HTMLInputElement>); //?
 
-    videoControlsNode.style = ``;
+    videoControlsNode.removeAttribute(`style`);
     camerasHeaderNode.textContent = el.title;
 
     // Прячем неактивные видео списка
@@ -44,26 +44,26 @@ for (let el of videoNodes) {
     videoNode.muted = false;
 
     videoControlsNode.style.display = `flex`;
-    videoControlsNode.style.opacity = 1;
+    videoControlsNode.style.opacity = `1`;
 
     // CSS фильтры
     videoInputNodes.forEach((element) => {
-      const inputId = element.getAttribute(`id`);
+      const inputId = <string>element.getAttribute(`id`);
 
       element.addEventListener(`input`, () => {
         if (inputId.startsWith(`brightness`)) {
-          brightnessValue = element.value / 100;
+          brightnessValue = parseFloat(element.value) / 100;
         }
         if (inputId.startsWith(`contrast`)) {
-          contrastValue = element.value;
+          contrastValue = parseFloat(element.value);
         }
         videoNode.style.filter = `brightness(${brightnessValue}) contrast(${contrastValue}%)`;
       });
     });
 
     const onModalClose = () => {
-      cameraListItem.style = ``;
-      videoControlsNode.style = ``;
+      cameraListItem.removeAttribute(`style`);
+      videoControlsNode.removeAttribute(`style`);
       videoClickCounter = 0;
       brightnessValue = initialFilterValues.BRIGHTNESS;
       contrastValue = initialFilterValues.CONTRAST;
@@ -95,6 +95,6 @@ for (let el of videoNodes) {
 
 initStreams(videoNodes);
 for (let videoEl of videoNodes) {
-  const currentElCanvas = videoEl.parentNode.querySelector(`.video-controls__sound-level`);
+  const currentElCanvas = <HTMLCanvasElement>(videoEl.parentNode as HTMLDivElement).querySelector(`.video-controls__sound-level`);
   initCanvasVolumeGraph(videoEl, currentElCanvas);
 }

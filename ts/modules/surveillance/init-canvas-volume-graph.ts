@@ -1,12 +1,11 @@
-export default function initCanvasVolumeGraph(element, elementCanvas) {
-  const AudioCtx = window.AudioContext || window.webkitAudioContext;
-  const audioContext = new AudioCtx();
+export default function initCanvasVolumeGraph(element: HTMLVideoElement, elementCanvas: HTMLCanvasElement) {
+  const audioContext: AudioContext = new AudioContext();
   const canvas = elementCanvas;
-  const canvasCtx = canvas.getContext(`2d`);
+  const canvasCtx = <CanvasRenderingContext2D>canvas.getContext(`2d`);
 
-  let analyser = null;
-  let dataArray = null;
-  let bufferLength = null;
+  let analyser: AnalyserNode;
+  let dataArray: Uint8Array;
+  let bufferLength: number;
 
   const buildAudioGraph = () => {
     let sourceNode = audioContext.createMediaElementSource(element);
@@ -37,6 +36,6 @@ export default function initCanvasVolumeGraph(element, elementCanvas) {
     }
   };
 
-  buildAudioGraph(element);
+  buildAudioGraph();
   requestAnimationFrame(visualizeVolumeLevel);
 }

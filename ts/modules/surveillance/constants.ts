@@ -8,4 +8,4 @@ const initialFilterValues = {
   CONTRAST: 100
 };
 
-export {keyCodes, initialFilterValues};
+export { keyCodes, initialFilterValues };
