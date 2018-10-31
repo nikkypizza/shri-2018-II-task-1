@@ -74,17 +74,8 @@ let sass = require(`gulp-sass`);
 let postcss = require(`gulp-postcss`);
 let autoprefixer = require(`autoprefixer`);
 
-// Monitor sass files + sync with local server
-gulp.task(`default`, [`sass`], function () {
-  browserSync.init([`css/*.css`, `js/*.js`, `*.html`, `sass/*.scss`], {
-    server: `./`
-  });
-  gulp.watch(`sass/**/*.scss`, [`sass`]);
-  gulp.watch(`*.html`).on(`change`, browserSync.reload);
-});
-
 // Convert SCSS to CSS
-gulp.task(`sass`, function () {
+gulp.task(`compile-sass`, function () {
   gulp.src(`sass/style.scss`)
     .pipe(plumber())
     .pipe(sass({
@@ -111,11 +102,11 @@ gulp.task(`sass`, function () {
 
 gulp.task(`copy`, function () {
   return gulp.src([
-      `*.html`,
-      `favicon.ico`
-    ], {
-      base: `.`
-    })
+    `*.html`,
+    `favicon.ico`
+  ], {
+    base: `.`
+  })
     .pipe(gulp.dest(`public`));
 });
 
@@ -152,3 +143,50 @@ gulp.task(`tslint`, () =>
   }))
   .pipe(tslint.report())
 );
+
+// const sourcemaps = require(`gulp-sourcemaps`);
+// const rollup = require(`gulp-better-rollup`);
+const ts = require(`gulp-typescript`);
+const eslint = require(`gulp-eslint`);
+
+gulp.task(`compile-ts`, function () {
+  gulp.src(`ts/node-hw/**/*.ts`)
+    .pipe(plumber())
+    // .pipe(sourcemaps.init())
+    .pipe(ts({
+      // module: `amd`,
+      lib: [`es6`, `dom`, `es2017`],
+      target: `es6`,
+      noImplicitAny: true,
+      // outFile: `server.js`,
+      // project: `tsconfig.json`
+    }))
+    // .pipe(rollup({}, `iife`))
+    // .pipe(sourcemaps.write(``))
+    .pipe(eslint({
+      fix: true
+    }))
+    .pipe(gulp.dest(`node-hw`));
+
+
+  gulp.src(`ts/page/**/*.ts`)
+    .pipe(plumber())
+    .pipe(ts({
+      lib: [`es6`, `dom`, `es2017`],
+      target: `es6`,
+      noImplicitAny: true,
+    }))
+    .pipe(eslint({
+      fix: true
+    }))
+    .pipe(gulp.dest(`js`));
+});
+
+gulp.task(`watch`, function () {
+  browserSync.init([`css/*.css`, `ts/**/*.ts`, `*.html`, `sass/**/*.scss`], {
+    server: `./`
+  });
+  gulp.watch(`sass/**/*.scss`, [`compile-sass`]);
+  gulp.watch(`ts/**/*.ts`, [`compile-ts`]);
+  gulp.watch(`*.html`).on(`change`, browserSync.reload);
+});

@@ -1,5 +1,3 @@
-import { Http2ServerRequest, Http2ServerResponse } from "http2";
-
 const express = require(`express`);
 const app = express();
 const PORT = 8000;
@@ -15,14 +13,14 @@ const routes = {
   EVENTS_DATA: `/api/events`
 };
 
-app.get(routes.ROOT, (request, response) => {
+app.get(routes.ROOT, (request: any, response:any) => { // не смог определить тип
   response.send(`<h1>Express server is up and running 👌</h1>`);
 });
 app.get(routes.STATUS, statusRouter);
 app.get(routes.EVENTS_DATA, eventsRouter);
 
 // Отдает 404, если путь отличен от routes
-app.use((request, response) => {
+app.use((request: any, response:any) => { // не смог определить тип
   response
     .type(`text/html`)
     .status(404)

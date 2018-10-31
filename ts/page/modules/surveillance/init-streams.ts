@@ -1,4 +1,4 @@
-import Hls from "hls.js";
+// import Hls from "hls.js";
 const videoUrlTitles = [`cat`, `sosed`, `dog`, `hall`];
 
 const initVideo = (video: HTMLVideoElement, url: string) => {

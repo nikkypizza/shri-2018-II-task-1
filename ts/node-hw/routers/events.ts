@@ -1,11 +1,12 @@
+(function () { 
 const sortDataByType = require(`../utils/data-sort.js`);
 const getErrorMessage = require(`../utils/get-error-message.js`);
 const fs = require(`fs`);
 
-const filterTypes: Array<string> = [`info`, `critical`];
+const filterTypes = [`info`, `critical`];
 
-const eventsRouter = (request, response) => {
-  const eventsJSONfile = JSON.parse(fs.readFileSync(`js/data/events.json`, `utf8`)).events;
+const eventsRouter = (request: any, response:any) => { // не смог определить тип
+  const eventsJSONfile = JSON.parse(fs.readFileSync(`../js/data/events.json`, `utf8`)).events;
   let output = null;
 
   if (filterTypes.includes(request.query.type)) {
@@ -22,3 +23,4 @@ const eventsRouter = (request, response) => {
 };
 
 module.exports = eventsRouter;
+})();
