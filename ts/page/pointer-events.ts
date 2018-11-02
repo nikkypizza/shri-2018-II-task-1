@@ -1,11 +1,13 @@
-const cameraNode = document.querySelector(`.widget-cam__img`);
-let evtCache = [];
-let prevDiff = -1;
-const initTouchScroll = (node) => {
-  let currentBackgroundPosition = 0;
-  let currentBackgroundZoom = 0;
-  let startX = 0;
-  const onPointeMove = (evt) => {
+const cameraNode = <HTMLDivElement>document.querySelector(`.widget-cam__img`);
+let evtCache: Array<PointerEvent> = [];
+let prevDiff: number = -1;
+
+const initTouchScroll = (node: HTMLDivElement) => {
+  let currentBackgroundPosition: number = 0;
+  let currentBackgroundZoom: number = 0;
+  let startX: number = 0;
+
+  const onPointeMove = (evt: PointerEvent) => {
     let xDiff = evt.x - startX;
     let newBackgroundPosition = currentBackgroundPosition + xDiff;
     for (let i = 0; i < evtCache.length; i++) {
@@ -14,6 +16,7 @@ const initTouchScroll = (node) => {
         break;
       }
     }
+
     switch (evtCache.length) {
       case 1:
         if (newBackgroundPosition > node.offsetWidth) {
@@ -24,9 +27,11 @@ const initTouchScroll = (node) => {
         }
         node.style.backgroundPositionX = `${newBackgroundPosition}px`;
         break;
+
       case 2:
         // Вычисляем расстояние между двумя указателями
         let doubleTouchDiff = Math.abs(evtCache[0].clientX - evtCache[1].clientX);
+
         if (prevDiff > 0) {
           if (doubleTouchDiff > prevDiff) {
             // Зум внутрь, если расстояние между указателями увеличилось
@@ -42,22 +47,26 @@ const initTouchScroll = (node) => {
         prevDiff = doubleTouchDiff;
     }
   };
+
   node.addEventListener(`pointerdown`, (evt) => {
     startX = evt.x;
     evtCache.push(evt);
   });
+
   node.addEventListener(`pointermove`, (evt) => {
     if (evt.pointerType === `touch`) {
       onPointeMove(evt);
     }
   });
+
   node.addEventListener(`pointerup`, () => {
-    currentBackgroundPosition = parseInt(node.style.backgroundPositionX, 10);
-    currentBackgroundZoom = parseInt(node.style.backgroundSize, 10);
+    currentBackgroundPosition = parseInt(node.style.backgroundPositionX as string, 10);
+    currentBackgroundZoom = parseInt(node.style.backgroundSize as string, 10);
     evtCache = [];
     if (evtCache.length < 2) {
       prevDiff = -1;
     }
   });
 };
+
 initTouchScroll(cameraNode);
