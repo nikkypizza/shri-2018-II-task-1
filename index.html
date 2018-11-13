@@ -41,7 +41,20 @@
   <main>
     <section class="events">
       <h1 class="events__header">Лента событий</h1>
-      <ul class="events__list"></ul>
+      <ul class="events__list">
+        <li class="events__card events__card--s events__card--fluxible" style="cursor: pointer;">
+          <header class="events__card-header">
+            <img class="events__card-icon" src="img/svg/icon-kettle.svg" alt="Иконка события">
+            <h2 class="events__card-title">Fluxible</h2>
+          </header>
+          <div class="events__card-subheader">
+            <span class="events__card-source">Click me!</span>
+            <span class="events__card-time events__card-time--fluxible">See if I care</span>
+          </div>
+          <button class="events__card-btn events__card-btn--close"></button>
+          <button class="events__card-btn events__card-btn--next"></button>
+        </li>
+      </ul>
     </section>
   </main>
   <footer class="page-footer">
@@ -95,7 +108,7 @@
       <header class="widget-music__artist">
         <img class="widget-music__album-cover" src="https://yt3.ggpht.com/a-/AN66SAz6pL7-pZDYKoZsapohqYlKlY3ypOPTLA-s_Q=s900-mo-c-c0xffffffff-rj-k-no" alt="Обложка альбома">
         <div class="widget-music__player">
-          <span class="widget-music__artist-name">Florence&The Machine Florence & The Machine  Florence & The Machine  Florence & The Machine </span>
+          <span class="widget-music__artist-name">Florence&The Machine Florence & The Machine Florence & The Machine Florence & The Machine </span>
           <div class="widget-music__song-state">
             <input class="widget-music__song-slider" type="range" min="0" max="100" value="5" step="1">
             <span class="widget-music__song-length">0:31</span>
@@ -144,6 +157,7 @@
   <script src="js/pointer-events.js"></script>
   <script src="js/external/modernizr-webp-custom.js"></script>
   <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+  <script src="js/fluxTest.js" type="module"></script>
   <!--
      Авторские права
     В проекте использованы ресурсы (иконки) с сайта www.flaticon.com.
