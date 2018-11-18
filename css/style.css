@@ -499,6 +499,8 @@ button {
   background-color: #f3f3f3; }
   .events__card:hover {
     box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5); }
+  .events__card:focus .events__card-btn {
+    display: block; }
 
 .events__card--s {
   padding-bottom: 11px; }
