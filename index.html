@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="robots" content="noindex">
-  <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1">
+  <meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">
   <title>Яндекс.Дом - События</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -64,7 +64,7 @@
   <template class="card-template">
     <li class="events__card">
       <header class="events__card-header">
-        <img class="events__card-icon" src="img/svg/icon-key.svg" alt="Иконка события">
+        <img class="events__card-icon" src="img/svg/icon-key.svg" aria-hidden="true" alt="">
         <h2 class="events__card-title">Дверь открыта</h2>
       </header>
       <div class="events__card-subheader">
@@ -74,8 +74,8 @@
       <div class="events__card-content">
         <p class="events__card-description"></p>
       </div>
-      <button class="events__card-btn events__card-btn--close"></button>
-      <button class="events__card-btn events__card-btn--next"></button>
+      <button type="button" class="events__card-btn events__card-btn--close" title="Закрыть событие"></button>
+      <button type="button" class="events__card-btn events__card-btn--unwrap" title="Развернуть событие"></button>
     </li>
   </template>
   <template class="widgets-template">
@@ -93,22 +93,22 @@
     <!-- Виджет музыки -->
     <div class="widget-music">
       <header class="widget-music__artist">
-        <img class="widget-music__album-cover" src="https://yt3.ggpht.com/a-/AN66SAz6pL7-pZDYKoZsapohqYlKlY3ypOPTLA-s_Q=s900-mo-c-c0xffffffff-rj-k-no" alt="Обложка альбома">
+        <img class="widget-music__album-cover" width="53" height="53" src="https://yt3.ggpht.com/a-/AN66SAz6pL7-pZDYKoZsapohqYlKlY3ypOPTLA-s_Q=s900-mo-c-c0xffffffff-rj-k-no" alt="Обложка альбома">
         <div class="widget-music__player">
           <span class="widget-music__artist-name">Florence&The Machine Florence & The Machine  Florence & The Machine  Florence & The Machine </span>
           <div class="widget-music__song-state">
-            <input class="widget-music__song-slider" type="range" min="0" max="100" value="5" step="1">
+            <input class="widget-music__song-slider" type="range" min="0" max="100" value="5" step="1" aria-label="Перемотать песню">
             <span class="widget-music__song-length">0:31</span>
           </div>
         </div>
       </header>
       <footer class="widget-music__controls">
         <div class="widget-music__button-wrapper">
-          <button class="widget-music__song-button" type="button"></button>
-          <button class="widget-music__song-button widget-music__song-button--next" type="button"></button>
+          <button class="widget-music__song-button" type="button" title="Перемотать назад"></button>
+          <button class="widget-music__song-button widget-music__song-button--next" type="button" title="Перемотать вперед"></button>
         </div>
         <form class="widget-music__form">
-          <input class="widget-music__volume-input" type="range" min="0" max="100" value="10" step="1" id="musicRangeInput" oninput="musicRangeOutput.value = `${musicRangeInput.value}%`">
+          <input class="widget-music__volume-input" type="range" min="0" max="100" value="10" step="1" id="musicRangeInput" oninput="musicRangeOutput.value = `${musicRangeInput.value}%`" aria-label="Настроить громкость">
           <output class="widget-music__volume-output" id="musicRangeOutput" for="musicRangeInput">340%</output>
         </form>
       </footer>

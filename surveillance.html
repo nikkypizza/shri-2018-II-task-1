@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="robots" content="noindex">
-  <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1">
+  <meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">
   <title>Яндекс.Дом - Видеонаблюдение</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -43,14 +43,14 @@
       <h1 class="cameras__header">Все камеры видеонаблюдения</h1>
       <ul class="cameras__list">
         <li class="cameras__list-item">
-          <video class="cameras__list-item-video" poster="img/video-posters/poster-cat.png" muted></video>
+          <video class="cameras__list-item-video" poster="img/video-posters/poster-cat.png" muted tabindex="0"></video>
           <div class="video-controls">
             <div class="video-controls__form">
               <span class="video-controls__title">Яркость</span>
-              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="brightnessRangeInput1" oninput="brightnessOutput1.value = `${brightnessRangeInput1.value}%`">
+              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="brightnessRangeInput1" oninput="brightnessOutput1.value = `${brightnessRangeInput1.value}%`" aria-label="Изменить яркость">
               <output class="video-controls__output" id="brightnessOutput1" for="brightnessRangeInput1">100%</output>
               <span class="video-controls__title">Контраст</span>
-              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput1" oninput="contrastRangeOutput1.value = `${contrastRangeInput1.value}%`">
+              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput1" oninput="contrastRangeOutput1.value = `${contrastRangeInput1.value}%`" aria-label="Изменить контраст">
               <output class="video-controls__output" id="contrastRangeOutput1" for="contrastRangeInput1">100%</output>
               <span class="video-controls__title">Датчик громкости</span>
               <canvas class="video-controls__sound-level" width="500" height="20"></canvas>
@@ -59,14 +59,14 @@
           </div>
         </li>
         <li class="cameras__list-item">
-          <video class="cameras__list-item-video" poster="img/video-posters/poster-sosed.png" muted></video>
+          <video class="cameras__list-item-video" poster="img/video-posters/poster-sosed.png" muted tabindex="0"></video>
           <div class="video-controls">
             <div class="video-controls__form">
               <span class="video-controls__title">Яркость</span>
-              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="brightnessRangeInput2" oninput="brightnessOutput2.value = `${brightnessRangeInput2.value}%`">
+              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="brightnessRangeInput2" oninput="brightnessOutput2.value = `${brightnessRangeInput2.value}%`" aria-label="Изменить яркость">
               <output class="video-controls__output" id="brightnessOutput2" for="brightnessRangeInput2">100%</output>
               <span class="video-controls__title">Контраст</span>
-              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput2" oninput="contrastRangeOutput2.value = `${contrastRangeInput2.value}%`">
+              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput2" oninput="contrastRangeOutput2.value = `${contrastRangeInput2.value}%`" aria-label="Изменить контраст">
               <output class="video-controls__output" id="contrastRangeOutput2" for="contrastRangeInput2">100%</output>
               <span class="video-controls__title">Датчик громкости</span>
               <canvas class="video-controls__sound-level" width="500" height="20"></canvas>
@@ -75,14 +75,14 @@
           </div>
         </li>
         <li class="cameras__list-item">
-          <video class="cameras__list-item-video" poster="img/video-posters/poster-dog.png" muted></video>
+          <video class="cameras__list-item-video" poster="img/video-posters/poster-dog.png" muted tabindex="0"></video>
           <div class="video-controls">
             <div class="video-controls__form">
               <span class="video-controls__title">Яркость</span>
-              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="brightnessRangeInput3" oninput="brightnessOutput3.value = `${brightnessRangeInput3.value}%`">
+              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="brightnessRangeInput3" oninput="brightnessOutput3.value = `${brightnessRangeInput3.value}%`" aria-label="Изменить яркость">
               <output class="video-controls__output" id="brightnessOutput3" for="brightnessRangeInput3">100%</output>
               <span class="video-controls__title">Контраст</span>
-              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput3" oninput="contrastRangeOutput3.value = `${contrastRangeInput3.value}%`">
+              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput3" oninput="contrastRangeOutput3.value = `${contrastRangeInput3.value}%`" aria-label="Изменить контраст">
               <output class="video-controls__output" id="contrastRangeOutput3" for="contrastRangeInput3">100%</output>
               <span class="video-controls__title">Датчик громкости</span>
               <canvas class="video-controls__sound-level" width="500" height="20"></canvas>
@@ -91,14 +91,14 @@
           </div>
         </li>
         <li class="cameras__list-item">
-          <video class="cameras__list-item-video" poster="img/video-posters/poster-hall.png" muted></video>
+          <video class="cameras__list-item-video" poster="img/video-posters/poster-hall.png" muted tabindex="0"></video>
           <div class="video-controls">
             <div class="video-controls__form">
               <span class="video-controls__title">Яркость</span>
-              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="brightnessRangeInput4" oninput="brightnessOutput4.value = `${brightnessRangeInput4.value}%`">
+              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="brightnessRangeInput4" oninput="brightnessOutput4.value = `${brightnessRangeInput4.value}%`" aria-label="Изменить яркость">
               <output class="video-controls__output" id="brightnessOutput4" for="brightnessRangeInput4">100%</output>
               <span class="video-controls__title">Контраст</span>
-              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput4" oninput="contrastRangeOutput4.value = `${contrastRangeInput4.value}%`">
+              <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput4" oninput="contrastRangeOutput4.value = `${contrastRangeInput4.value}%`" aria-label="Изменить контраст">
               <output class="video-controls__output" id="contrastRangeOutput4" for="contrastRangeInput4">100%</output>
               <span class="video-controls__title">Датчик громкости</span>
               <canvas class="video-controls__sound-level" width="500" height="20"></canvas>
