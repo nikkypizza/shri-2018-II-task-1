@@ -16,12 +16,12 @@
       <a href="#" title="На главную" class="page-header__logo">
         <img src="img/svg/ya-logo.svg" width="113" height="38" alt="Яндекс.Дом">
       </a>
-      <button type="button" class="page-header__menu-toggler" title="Открыть меню"></button>
+      <button type="button" class="page-header__menu-toggler" aria-label="Открыть меню" title="Открыть меню"></button>
     </div>
     <nav class="page-header__nav">
       <ul class="page-header__nav-list">
         <li class="page-header__nav-list-item page-header__nav-list-item--active">
-          <a href="#">События</a>
+          <a>События</a>
         </li>
         <li class="page-header__nav-list-item">
           <a href="#">Сводка</a>
@@ -74,8 +74,8 @@
       <div class="events__card-content">
         <p class="events__card-description"></p>
       </div>
-      <button type="button" class="events__card-btn events__card-btn--close" title="Закрыть событие"></button>
-      <button type="button" class="events__card-btn events__card-btn--unwrap" title="Развернуть событие"></button>
+      <button type="button" class="events__card-btn events__card-btn--close" aria-label="Закрыть событие" title="Закрыть событие"></button>
+      <button type="button" class="events__card-btn events__card-btn--unwrap" aria-label="Развернуть событие" title="Развернуть событие"></button>
     </li>
   </template>
   <template class="widgets-template">
@@ -104,8 +104,8 @@
       </header>
       <footer class="widget-music__controls">
         <div class="widget-music__button-wrapper">
-          <button class="widget-music__song-button" type="button" title="Перемотать назад"></button>
-          <button class="widget-music__song-button widget-music__song-button--next" type="button" title="Перемотать вперед"></button>
+          <button class="widget-music__song-button" type="button" value="Перемотать назад" aria-label="Перемотать назад"></button>
+          <button class="widget-music__song-button widget-music__song-button--next" type="button" value="Перемотать вперед" aria-label="Перемотать вперед"></button>
         </div>
         <form class="widget-music__form">
           <input class="widget-music__volume-input" type="range" min="0" max="100" value="10" step="1" id="musicRangeInput" oninput="musicRangeOutput.value = `${musicRangeInput.value}%`" aria-label="Настроить громкость">
