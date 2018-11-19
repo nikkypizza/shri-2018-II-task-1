@@ -13,27 +13,27 @@
 <body>
   <header class="page-header">
     <div class="page-header__wrapper">
-      <a href="#" title="На главную" class="page-header__logo">
-        <img src="img/svg/ya-logo.svg" width="113" height="38" alt="Яндекс.Дом">
+      <a href="#" title="На главную" class="page-header__logo" aria-label="Вернуться на главную страницу">
+        <img src="img/svg/ya-logo.svg" width="113" height="38" alt="Логотип Яндекс.Дома">
       </a>
-      <button type="button" class="page-header__menu-toggler" aria-label="Открыть меню" title="Открыть меню"></button>
+      <button type="button" class="page-header__menu-toggler" aria-label="Открыть меню навигации" title="Открыть меню"></button>
     </div>
     <nav class="page-header__nav">
       <ul class="page-header__nav-list">
         <li class="page-header__nav-list-item page-header__nav-list-item--active">
-          <a>События</a>
+          <a aria-label="События умного дома. Текущая страница">События</a>
         </li>
         <li class="page-header__nav-list-item">
-          <a href="#">Сводка</a>
+          <a href="#" aria-label="Сводка работы устройств умного дома">Сводка</a>
         </li>
         <li class="page-header__nav-list-item">
-          <a href="#">Устройства</a>
+          <a href="#" aria-label="Устройства умного дома">Устройства</a>
         </li>
         <li class="page-header__nav-list-item">
-          <a href="#">Сценарии</a>
+          <a href="#" aria-label="Сценарии умного дома">Сценарии</a>
         </li>
         <li class="page-header__nav-list-item">
-          <a href="surveillance.html">Видеонаблюдение</a>
+          <a href="surveillance.html" aria-label="Перейти на страницу с камерами видеонаблюдения">Видеонаблюдение</a>
         </li>
       </ul>
     </nav>
@@ -45,18 +45,18 @@
     </section>
   </main>
   <footer class="page-footer">
-    <ul class="page-footer__links">
+    <ul class="page-footer__links" aria-label="Как с нами связаться">
       <li>
-        <a href="#">Помощь</a>
+        <a href="#" aria-label="Помощь в использовании умного дома">Помощь</a>
       </li>
       <li>
-        <a href="#">Обратная связь</a>
+        <a href="#" aria-label="Оставить обратную связь">Обратная связь</a>
       </li>
       <li>
-        <a href="#">Разработчикам</a>
+        <a href="#" aria-label="Страница с инструментами, полезными разработчикам">Разработчикам</a>
       </li>
       <li>
-        <a href="#">Условия использования</a>
+        <a href="#" aria-label="Условия использования технологий умного дома">Условия использования</a>
       </li>
     </ul>
     <span class="page-footer__copyright">© 2001–2017 ООО «Яндекс»</span>
@@ -97,36 +97,30 @@
         <div class="widget-music__player">
           <span class="widget-music__artist-name">Florence&The Machine Florence & The Machine  Florence & The Machine  Florence & The Machine </span>
           <div class="widget-music__song-state">
-            <input class="widget-music__song-slider" type="range" min="0" max="100" value="5" step="1" aria-label="Перемотать песню">
+            <input class="widget-music__song-slider" type="range" min="0" max="100" value="5" step="1" aria-label="Перемотать песню, слайдер">
             <span class="widget-music__song-length">0:31</span>
           </div>
         </div>
       </header>
       <footer class="widget-music__controls">
         <div class="widget-music__button-wrapper">
-          <button class="widget-music__song-button" type="button" value="Перемотать назад" aria-label="Перемотать назад"></button>
-          <button class="widget-music__song-button widget-music__song-button--next" type="button" value="Перемотать вперед" aria-label="Перемотать вперед"></button>
+          <button class="widget-music__song-button" type="button" value="Перемотать назад" aria-label="Перемотать песню, шаг назад"></button>
+          <button class="widget-music__song-button widget-music__song-button--next" type="button" value="Перемотать вперед" aria-label="Перемотать песню, шаг вперед"></button>
         </div>
         <form class="widget-music__form">
-          <input class="widget-music__volume-input" type="range" min="0" max="100" value="10" step="1" id="musicRangeInput" oninput="musicRangeOutput.value = `${musicRangeInput.value}%`" aria-label="Настроить громкость">
+          <input class="widget-music__volume-input" type="range" min="0" max="100" value="10" step="1" id="musicRangeInput" oninput="musicRangeOutput.value = `${musicRangeInput.value}%`" aria-label="Настроить громкость музыки">
           <output class="widget-music__volume-output" id="musicRangeOutput" for="musicRangeInput">340%</output>
         </form>
       </footer>
     </div>
     <!-- Виджет формы холодильника -->
     <form class="widget-fridge" action="#">
-      <button class="widget-fridge__btn widget-fridge__btn--confirm" type="button">Да</button>
-      <button class="widget-fridge__btn" type="button">Нет</button>
+      <button class="widget-fridge__btn widget-fridge__btn--confirm" type="button" aria-label="Добавить продукт в список покупок">Да</button>
+      <button class="widget-fridge__btn" type="button" aria-label="Не добавлять продукт в список покупок">Нет</button>
     </form>
     <!-- Виджет сенсора движения (камера пылесоса) -->
     <div class="widget-cam">
-      <!--
-      <picture>
-        <source type="image/webp" srcset="img/robot-cleaner.webp 1x, img/robot-cleaner2x.webp 2x, img/robot-cleaner3x.webp 3x">
-        <img class="widget-cam__img" src="img/robot-cleaner.png" srcset="img/robot-cleaner2x.png 2x, img/robot-cleaner3x.png 3x" alt="Пылесос испытывает затруднения">
-      </picture>
-    -->
-      <div class="widget-cam__img" touch-action="none">
+      <div class="widget-cam__img" touch-action="none" aria-label="Интерактивная камера видеонаблюдения. Сенсор в спальне">
       </div>
       <ul class="widget-cam__data">
         <li class="widget-cam__data-item">
