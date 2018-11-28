@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#96370E">
   <meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">
+  <meta name="description" content="Интерактивное приложение для управления умным домом"/>
   <title>Яндекс.Дом - События</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -13,10 +15,10 @@
 <body>
   <header class="page-header">
     <div class="page-header__wrapper">
-      <a href="#" title="На главную" class="page-header__logo" aria-label="Вернуться на главную страницу">
+      <a href="#" title="На главную страницу" class="page-header__logo">
         <img src="img/svg/ya-logo.svg" width="113" height="38" alt="Логотип Яндекс.Дома">
       </a>
-      <button type="button" class="page-header__menu-toggler" aria-label="Открыть меню навигации" title="Открыть меню"></button>
+      <button type="button" class="page-header__menu-toggler" title="Открыть меню навигации"></button>
     </div>
     <nav class="page-header__nav">
       <ul class="page-header__nav-list">
@@ -24,16 +26,16 @@
           <a aria-label="События умного дома. Текущая страница">События</a>
         </li>
         <li class="page-header__nav-list-item">
-          <a href="#" aria-label="Сводка работы устройств умного дома">Сводка</a>
+          <a href="#">Сводка</a>
         </li>
         <li class="page-header__nav-list-item">
-          <a href="#" aria-label="Устройства умного дома">Устройства</a>
+          <a href="#">Устройства</a>
         </li>
         <li class="page-header__nav-list-item">
-          <a href="#" aria-label="Сценарии умного дома">Сценарии</a>
+          <a href="#">Сценарии</a>
         </li>
         <li class="page-header__nav-list-item">
-          <a href="surveillance.html" aria-label="Перейти на страницу с камерами видеонаблюдения">Видеонаблюдение</a>
+          <a href="surveillance.html">Видеонаблюдение</a>
         </li>
       </ul>
     </nav>
@@ -44,8 +46,8 @@
       <ul class="events__list"></ul>
     </section>
   </main>
-  <footer class="page-footer">
-    <ul class="page-footer__links" aria-label="Как с нами связаться">
+  <footer class="page-footer" aria-label="Как с нами связаться">
+    <ul class="page-footer__links">
       <li>
         <a href="#" aria-label="Помощь в использовании умного дома">Помощь</a>
       </li>
@@ -74,8 +76,8 @@
       <div class="events__card-content">
         <p class="events__card-description"></p>
       </div>
-      <button type="button" class="events__card-btn events__card-btn--close" aria-label="Закрыть событие" title="Закрыть событие"></button>
-      <button type="button" class="events__card-btn events__card-btn--unwrap" aria-label="Развернуть событие" title="Развернуть событие"></button>
+      <button type="button" class="events__card-btn events__card-btn--close" title="Закрыть событие"></button>
+      <button type="button" class="events__card-btn events__card-btn--unwrap" title="Развернуть событие"></button>
     </li>
   </template>
   <template class="widgets-template">
@@ -97,7 +99,7 @@
         <div class="widget-music__player">
           <span class="widget-music__artist-name">Florence&The Machine Florence & The Machine  Florence & The Machine  Florence & The Machine </span>
           <div class="widget-music__song-state">
-            <input class="widget-music__song-slider" type="range" min="0" max="100" value="5" step="1" aria-label="Перемотать песню, слайдер">
+            <input class="widget-music__song-slider" type="range" min="0" max="100" value="5" step="1" aria-label="Перемотать песню">
             <span class="widget-music__song-length">0:31</span>
           </div>
         </div>
@@ -108,7 +110,7 @@
           <button class="widget-music__song-button widget-music__song-button--next" type="button" value="Перемотать вперед" aria-label="Перемотать песню, шаг вперед"></button>
         </div>
         <form class="widget-music__form">
-          <input class="widget-music__volume-input" type="range" min="0" max="100" value="10" step="1" id="musicRangeInput" oninput="musicRangeOutput.value = `${musicRangeInput.value}%`" aria-label="Настроить громкость музыки">
+          <input class="widget-music__volume-input" type="range" min="0" max="100" value="10" step="1" id="musicRangeInput" oninput="musicRangeOutput.value = `${musicRangeInput.value}%`" aria-label="Громкость">
           <output class="widget-music__volume-output" id="musicRangeOutput" for="musicRangeInput">340%</output>
         </form>
       </footer>

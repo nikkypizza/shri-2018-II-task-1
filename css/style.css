@@ -441,9 +441,10 @@ button {
 .page-header__menu-toggler {
   align-self: center;
   box-sizing: content-box;
-  width: 16px;
-  height: 16px;
+  width: 1em;
+  height: 1em;
   margin: 10px 10px 0 auto;
+  padding: 13px;
   background-image: url("../img/svg/icon-menu-closed.svg");
   background-repeat: no-repeat;
   background-position: center; }
@@ -462,7 +463,7 @@ button {
   .page-header__nav-list-item--active a {
     pointer-events: none;
     opacity: 1;
-    text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0, 0, 0, 0.25); }
+    text-shadow: 2px 2px 0px #ffffff, 5px 4px 0px rgba(0, 0, 0, 0.25); }
   .page-header__nav-list-item a:hover {
     color: #9a9a9a; }
   .page-header__nav-list-item a:active {
@@ -509,8 +510,10 @@ button {
   background-color: #f3f3f3; }
   .events__card:hover {
     box-shadow: 0 5px 6px 0 rgba(197, 186, 186, 0.5); }
-  .events__card:focus .events__card-btn {
-    display: block; }
+    .events__card:hover .events__card-btn {
+      opacity: 1; }
+  .events__card:focus-within .events__card-btn {
+    opacity: 1; }
 
 .events__card--s {
   padding-bottom: 11px; }
@@ -564,10 +567,10 @@ button {
 
 .events__card-btn {
   position: absolute;
-  display: none;
-  width: 17px;
-  height: 17px;
-  padding: 0;
+  opacity: 0;
+  width: 1.063em;
+  height: 1.063em;
+  padding: 15px;
   background-repeat: no-repeat;
   background-position: center; }
   .events__card-btn--close {
@@ -676,7 +679,8 @@ button {
   width: 53px;
   height: 53px;
   margin-right: 15px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  flex: 0 0 auto; }
 
 .widget-music__player {
   display: flex;

@@ -76,7 +76,7 @@ for (let el of videoNodes) {
     });
   };
   el.addEventListener(`click`, onVideoNodeClick);
-  el.addEventListener(`keyup`, (evt) => {
+  el.addEventListener(`keydown`, (evt) => {
     if (evt.keyCode === keyCodes.SPACE || evt.keyCode === keyCodes.ENTER) {
       onVideoNodeClick(evt);
     }

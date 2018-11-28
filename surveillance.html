@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#96370E">
   <meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">
+  <meta name="description" content="Интерактивное приложение для управления умным домом"/>
   <title>Яндекс.Дом - Видеонаблюдение</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -13,24 +15,24 @@
 <body>
   <header class="page-header">
     <div class="page-header__wrapper">
-      <a href="#" title="На главную" class="page-header__logo" aria-label="Вернуться на главную страницу">
+      <a href="#" title="На главную страницу" class="page-header__logo">
         <img src="img/svg/ya-logo.svg" width="113" height="38" alt="Логотип Яндекс.Дома">
       </a>
-      <button type="button" class="page-header__menu-toggler" aria-label="Открыть меню навигации" title="Открыть меню"></button>
+      <button type="button" class="page-header__menu-toggler" title="Открыть меню навигации"></button>
     </div>
     <nav class="page-header__nav">
       <ul class="page-header__nav-list">
         <li class="page-header__nav-list-item">
-          <a href="index.html" aria-label="События умного дома">События</a>
+          <a href="index.html">События</a>
         </li>
         <li class="page-header__nav-list-item">
-          <a href="#" aria-label="Сводка работы устройств умного дома">Сводка</a>
+          <a href="#">Сводка</a>
         </li>
         <li class="page-header__nav-list-item">
-          <a href="#" aria-label="Устройства умного дома">Устройства</a>
+          <a href="#">Устройства</a>
         </li>
         <li class="page-header__nav-list-item">
-          <a href="#" aria-label="Сценарии умного дома">Сценарии</a>
+          <a href="#">Сценарии</a>
         </li>
         <li class="page-header__nav-list-item page-header__nav-list-item--active">
           <a aria-label="Камеры видеонаблюдения. Текущая страница">Видеонаблюдение</a>
@@ -47,10 +49,10 @@
           <p class="visually-hidden" id="cat-camera-aria-description">Видео выводит изображение с камеры видеонаблюдения в корридоре вашей квартиры в режиме реального времени. Камера расположена напротив входной двери внутри квартиры и частично захватывает гостиную.</p>
           <div class="video-controls">
             <div class="video-controls__form">
-              <span class="video-controls__title">Яркость</span>
+              <label class="video-controls__title" for="brightnessRangeInput1">Яркость</label>
               <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="brightnessRangeInput1" oninput="brightnessOutput1.value = `${brightnessRangeInput1.value}%`" aria-label="Изменить яркость">
               <output class="video-controls__output" id="brightnessOutput1" for="brightnessRangeInput1">100%</output>
-              <span class="video-controls__title">Контраст</span>
+              <label class="video-controls__title" for="contrastRangeInput1">Контраст</label>
               <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput1" oninput="contrastRangeOutput1.value = `${contrastRangeInput1.value}%`" aria-label="Изменить контраст">
               <output class="video-controls__output" id="contrastRangeOutput1" for="contrastRangeInput1">100%</output>
               <span class="video-controls__title">Датчик громкости</span>
@@ -61,13 +63,13 @@
         </li>
         <li class="cameras__list-item">
           <video class="cameras__list-item-video" aria-describedby="sosed-camera-aria-description" poster="img/video-posters/poster-sosed.png" muted tabindex="0"></video>
-          <p class="visually-hidden" id="sosed-camera-aria-description">Видео выводит изображение с камеры видеонаблюдения в вашем подъезде в режиме реального времени. Камера расположена напротив вашей входной двери со стороны подъезда. По правой стороне видны велосипеды ваших соседей.</p>
+          <p class="visually-hidden" id="sosed-camera-aria-description">Видео выводит изображение с камеры видеонаблюдения в вашем подъезде в режиме реального времени. Камера расположена напротив вашей входной двери со стороны подъезда.</p>
           <div class="video-controls">
             <div class="video-controls__form">
-              <span class="video-controls__title">Яркость</span>
+              <label class="video-controls__title" for="brightnessRangeInput2">Яркость</label>
               <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="brightnessRangeInput2" oninput="brightnessOutput2.value = `${brightnessRangeInput2.value}%`" aria-label="Изменить яркость">
               <output class="video-controls__output" id="brightnessOutput2" for="brightnessRangeInput2">100%</output>
-              <span class="video-controls__title">Контраст</span>
+              <label class="video-controls__title" for="contrastRangeInput2">Контраст</label>
               <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput2" oninput="contrastRangeOutput2.value = `${contrastRangeInput2.value}%`" aria-label="Изменить контраст">
               <output class="video-controls__output" id="contrastRangeOutput2" for="contrastRangeInput2">100%</output>
               <span class="video-controls__title">Датчик громкости</span>
@@ -78,13 +80,13 @@
         </li>
         <li class="cameras__list-item">
           <video class="cameras__list-item-video" aria-describedby="dog-camera-aria-description" poster="img/video-posters/poster-dog.png" muted tabindex="0"></video>
-          <p class="visually-hidden" id="dog-camera-aria-description">Видео выводит изображение с камеры видеонаблюдения во дворе вашей дачи в режиме реального времени. Камера установлена на гараже и смотрит во внутренний двор. Слева в поле видимости камеры полность попадает ваш дом. Справа на видео ваш сарай с инструментами.</p>
+          <p class="visually-hidden" id="dog-camera-aria-description">Видео выводит изображение с камеры видеонаблюдения во дворе вашей дачи в режиме реального времени. Камера установлена на гараже и смотрит во внутренний двор. Слева в поле видимости камеры полность попадает ваш дом. Справа на видео ваш сарай.</p>
           <div class="video-controls">
             <div class="video-controls__form">
-              <span class="video-controls__title">Яркость</span>
+              <label class="video-controls__title" for="brightnessRangeInput3">Яркость</label>
               <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="brightnessRangeInput3" oninput="brightnessOutput3.value = `${brightnessRangeInput3.value}%`" aria-label="Изменить яркость">
               <output class="video-controls__output" id="brightnessOutput3" for="brightnessRangeInput3">100%</output>
-              <span class="video-controls__title">Контраст</span>
+              <label class="video-controls__title" for="contrastRangeInput3">Контраст</label>
               <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput3" oninput="contrastRangeOutput3.value = `${contrastRangeInput3.value}%`" aria-label="Изменить контраст">
               <output class="video-controls__output" id="contrastRangeOutput3" for="contrastRangeInput3">100%</output>
               <span class="video-controls__title">Датчик громкости</span>
@@ -98,10 +100,10 @@
           <p class="visually-hidden" id="hall-camera-aria-description">Видео выводит изображение с камеры видеонаблюдения во корридоре вашего офиса в Яндексе в режиме реального времени. Камера установлена на двери вашего кабинета и смотрит наружу. В поле видимости камеры попадает корридор и два пожарных ящика справа.</p>
           <div class="video-controls">
             <div class="video-controls__form">
-              <span class="video-controls__title">Яркость</span>
+              <label class="video-controls__title" for="brightnessRangeInput4">Яркость</label>
               <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="brightnessRangeInput4" oninput="brightnessOutput4.value = `${brightnessRangeInput4.value}%`" aria-label="Изменить яркость">
               <output class="video-controls__output" id="brightnessOutput4" for="brightnessRangeInput4">100%</output>
-              <span class="video-controls__title">Контраст</span>
+              <label class="video-controls__title" for="contrastRangeInput4">Контраст</label>
               <input class="video-controls__input" type="range" min="0" max="200" value="100" step="1" id="contrastRangeInput4" oninput="contrastRangeOutput4.value = `${contrastRangeInput4.value}%`" aria-label="Изменить контраст">
               <output class="video-controls__output" id="contrastRangeOutput4" for="contrastRangeInput4">100%</output>
               <span class="video-controls__title">Датчик громкости</span>
@@ -113,8 +115,8 @@
       </ul>
     </section>
   </main>
-  <footer class="page-footer">
-    <ul class="page-footer__links" aria-label="Как с нами связаться">
+  <footer class="page-footer" aria-label="Как с нами связаться">
+    <ul class="page-footer__links">
       <li>
         <a href="#" aria-label="Помощь в использовании умного дома">Помощь</a>
       </li>
