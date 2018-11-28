@@ -4,19 +4,19 @@
 
   // Закрывает меню по умолчанию, меняет img кнопки
   menuButton.style.backgroundImage = `url("img/svg/icon-menu-open.svg")`;
-  menuButton.title = `Открыть меню`;
+  menuButton.title = `Открыть меню навигации`;
   navList.style.display = `none`;
   // -------------------------
 
   menuButton.addEventListener(`click`, () => {
-    if (menuButton.title === `Открыть меню`) {
+    if (menuButton.title === `Открыть меню навигации`) {
       menuButton.style.backgroundImage = `url("img/svg/icon-menu-open.svg")`;
-      menuButton.title = `Закрыть меню`;
+      menuButton.title = `Закрыть меню навигации`;
       navList.style.display = ``;
     } else {
       menuButton.style.backgroundImage = `url("img/svg/icon-menu-closed.svg")`;
       navList.style.display = `none`;
-      menuButton.title = `Открыть меню`;
+      menuButton.title = `Открыть меню навигации`;
     }
   });
 
@@ -35,7 +35,7 @@
     } else {
       // при ширине вьюпорта меньше 768px
       navList.style.display = `none`;
-      menuButton.title = `Открыть меню`;
+      menuButton.title = `Открыть меню навигации`;
       menuButton.style.display = ``;
       menuButton.style.backgroundImage = `url("img/svg/icon-menu-closed.svg")`;
     }

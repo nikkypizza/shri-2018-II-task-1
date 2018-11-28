@@ -1,6 +1,6 @@
 .widget-temperature {
   font-size: 14px;
-  line-height: 18px;
+  line-height: 1.2;
   display: flex;
   justify-content: space-between;
 }
@@ -8,17 +8,17 @@
 .widget-temperature-value {
   font-size: 14px;
   font-weight: bold;
-  line-height: 16px;
+  line-height: 1.2;
 }
 
 @media ($desktop-width) {
   .widget-temperature {
     font-size: 18px;
-    line-height: 21px;
+    line-height: 1.2;
   }
 
   .widget-temperature-value {
     font-size: 18px;
-    line-height: 21px;
+    line-height: 1.2;
   }
 }

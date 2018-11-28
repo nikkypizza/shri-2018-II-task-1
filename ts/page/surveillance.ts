@@ -12,7 +12,7 @@ let contrastValue = initialFilterValues.CONTRAST;
 let videoClickCounter = 0;
 
 for (let el of videoNodes) {
-  el.addEventListener(`click`, (evt) => {
+  const onVideoNodeClick = (evt: any) => {
 
     videoClickCounter++;
     if (videoClickCounter > 1) {
@@ -90,7 +90,14 @@ for (let el of videoNodes) {
         }
       }
     });
-  });
+  };
+
+  el.addEventListener(`click`, onVideoNodeClick);
+  el.addEventListener(`keydown`, (evt) => {
+    if (evt.keyCode === keyCodes.SPACE || evt.keyCode === keyCodes.ENTER) {
+      onVideoNodeClick(evt);
+    }
+  })
 }
 
 initStreams(videoNodes);

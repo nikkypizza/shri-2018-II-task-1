@@ -179,7 +179,7 @@ const INPUT_DATA = JSON.parse(JSON.stringify(INPUT_JSON));
 const renderCards = (input) => {
   const criticalColors = {
     TEXT: `#ffffff`,
-    BACKGROUND: `#db5341`
+    BACKGROUND: `#96370e`
   };
   const eventsListNode = document.querySelector(`.events__list`);
   const cardTemplateNode = document.querySelector(`.card-template`);
@@ -218,11 +218,15 @@ const renderCards = (input) => {
           break;
         case JSONIconTitleEnum.Music:
           cardContentNode.appendChild(musicWidgetNode.cloneNode(true));
-          currentElement.querySelector(`.widget-music__album-cover`).src = element.data.albumcover;
+          if (element.data.albumcover === `https://avatars.yandex.net/get-music-content/193823/1820a43e.a.5517056-1/m1000x1000`) {
+            currentElement.querySelector(`.widget-music__album-cover`).src = `img/audio-player-artist-pic.jpg`;
+          } else {
+            currentElement.querySelector(`.widget-music__album-cover`).src = element.data.albumcover;
+          }
           currentElement.querySelector(`.widget-music__artist-name`).textContent = `${element.data.artist} - ${element.data.track.name}`;
           currentElement.querySelector(`.widget-music__song-length`).textContent = element.data.track.length;
           currentElement.querySelector(`.widget-music__volume-input`).value = element.data.volume.toString();
-          currentElement.querySelector(`.widget-music__volume-output`).textContent = element.data.volume.toString();
+          currentElement.querySelector(`.widget-music__volume-output`).textContent = `${element.data.volume.toString()}%`;
           break;
       }
     }

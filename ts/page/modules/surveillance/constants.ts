@@ -1,6 +1,7 @@
 const keyCodes = {
   ESC: 27,
-  ENTER: 13
+  ENTER: 13,
+  SPACE: 32
 };
 
 const initialFilterValues = {
